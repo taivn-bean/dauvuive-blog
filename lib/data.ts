@@ -412,22 +412,6 @@ export async function getArticle(slug: string): Promise<Article | undefined> {
   return articles.find((article) => article.slug === slug)
 }
 
-export async function getArticlesByCategory(
-  categorySlug: string,
-  page = 1,
-  limit = 10,
-): Promise<{ articles: Article[]; totalPages: number }> {
-  const categoryArticles = articles.filter((article) => article.category.slug === categorySlug)
-  const totalPages = Math.ceil(categoryArticles.length / limit)
-  const startIndex = (page - 1) * limit
-  const endIndex = startIndex + limit
-
-  return {
-    articles: categoryArticles.slice(startIndex, endIndex),
-    totalPages,
-  }
-}
-
 export async function getArticlesByTag(
   tagSlug: string,
   page = 1,
@@ -444,9 +428,6 @@ export async function getArticlesByTag(
   }
 }
 
-export async function getCategory(slug: string): Promise<Category | undefined> {
-  return categories.find((category) => category.slug === slug)
-}
 
 export async function getTag(slug: string): Promise<Tag | undefined> {
   return tags.find((tag) => tag.slug === slug)

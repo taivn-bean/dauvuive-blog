@@ -3,8 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, Tag } from "lucide-react";
 import {
-  getArticle,
-  getArticleSlugs,
   getRelatedArticles,
   getSeriesByArticle,
   generateTableOfContents,
@@ -19,11 +17,14 @@ import SeriesList from "@/components/series/series-list";
 import TableOfContents from "@/components/series/table-of-contents";
 import ArticleContent from "@/components/article/article-content";
 import RelatedArticles from "@/components/article/related-articles";
+import { getArticle, getArticleSlugs } from "@/services/articles";
+import { getReadingTime } from "@/utils/common";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 // Generate static paths for all articles
 export async function generateStaticParams() {
   const slugs = await getArticleSlugs();
-  return slugs.map((slug) => ({ slug }));
+  return slugs.map((ele) => ({ slug: ele.slug }));
 }
 
 // Generate metadata for each article
@@ -42,26 +43,26 @@ export async function generateMetadata({
   }
 
   // Giả định rằng article có thêm trường rating
-  const articleRating = article.rating || { average: 0, count: 0 };
+  const articleRating = article.ratings || { average: 0, count: 0 };
 
   return {
     title: article.title,
-    description: article.description,
+    description: article.excerpt,
     keywords: [
-      ...article.tags?.map((tag) => tag.name),
+      ...(article.tags?.map((tag) => tag.name) || []),
       "chăm sóc trẻ",
       "nuôi dạy trẻ",
     ],
     openGraph: {
-      title: article.title,
-      description: article.description,
+      title: article.seo.title,
+      description: article.seo.description,
       type: "article",
-      publishedTime: article.publishedAt,
-      authors: [article.author.name],
+      publishedTime: article.created_at,
+      authors: [article.author?.name ?? ""],
       tags: article.tags?.map((tag) => tag.name),
       images: [
         {
-          url: article.coverImage,
+          url: article.seo.image || article.cover_image || "",
           width: 1200,
           height: 630,
           alt: article.title,
@@ -71,8 +72,8 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: article.title,
-      description: article.description,
-      images: [article.coverImage],
+      description: article.seo.description,
+      images: [article.seo.image || article.cover_image || ""],
     },
     // Thêm schema.org structured data cho rating
     other: {
@@ -80,11 +81,11 @@ export async function generateMetadata({
         "@context": "https://schema.org",
         "@type": "Article",
         headline: article.title,
-        image: article.coverImage,
-        datePublished: article.publishedAt,
+        image: article.seo.image,
+        datePublished: article.created_at,
         author: {
           "@type": "Person",
-          name: article.author.name,
+          name: article.author?.name ?? "",
         },
         publisher: {
           "@type": "Organization",
@@ -94,14 +95,14 @@ export async function generateMetadata({
             url: "https://kidcare.vn/logo.png",
           },
         },
-        description: article.description,
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: articleRating.average.toString(),
-          ratingCount: articleRating.count.toString(),
-          bestRating: "5",
-          worstRating: "1",
-        },
+        description: article.seo.description,
+        // aggregateRating: {
+        //   "@type": "AggregateRating",
+        //   ratingValue: articleRating.average.toString(),
+        //   ratingCount: articleRating.count.toString(),
+        //   bestRating: "5",
+        //   worstRating: "1",
+        // },
       },
     },
   };
@@ -109,44 +110,23 @@ export async function generateMetadata({
 
 export default async function ArticlePage({
   params,
-}: {
+}: Readonly<{
   params: { slug: string };
-}) {
-  const article = await getArticle(params.slug);
+}>) {
+  const article = await getArticle((await params).slug);
 
-  if (!article) {
-    return (
-      <div className="container mx-auto px-4 py-16 text-center">
-        <h1 className="text-3xl font-bold mb-4">Bài viết không tồn tại</h1>
-        <p className="mb-8">
-          Bài viết bạn đang tìm kiếm không tồn tại hoặc đã bị xóa.
-        </p>
-        <Link
-          href="/"
-          className="inline-flex items-center justify-center rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-primary-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary-500"
-        >
-          Quay lại trang chủ
-        </Link>
-      </div>
-    );
-  }
-
-  const relatedArticles = await getRelatedArticles(
-    article.id,
-    article.categoryId
-  );
-  const seriesInfo = article.seriesId
-    ? await getSeriesByArticle(article.id)
+  const seriesInfo = article?.series_id
+    ? await getSeriesByArticle(article?.id ?? "")
     : null;
-  const tableOfContents = generateTableOfContents(article.content);
+  const tableOfContents = generateTableOfContents(article?.content ?? "");
 
   // Giả định rằng article có thêm các trường này
-  const articleRating = article.rating || { average: 4.2, count: 15 };
-  const articleStats = article.stats || {
-    upvotes: 24,
-    downvotes: 3,
-    comments: 8,
-  };
+  // const articleRating = article.rating || { average: 4.2, count: 15 };
+  // const articleStats = article.stats || {
+  //   upvotes: 24,
+  //   downvotes: 3,
+  //   comments: 8,
+  // };
 
   // Giả định rằng có sẵn dữ liệu bình luận
   const mockComments = [
@@ -186,16 +166,33 @@ export default async function ArticlePage({
     },
   ];
 
+  if (!article) {
+    return (
+      <div className="container mx-auto px-4 py-16 text-center">
+        <h1 className="text-3xl font-bold mb-4">Bài viết không tồn tại</h1>
+        <p className="mb-8">
+          Bài viết bạn đang tìm kiếm không tồn tại hoặc đã bị xóa.
+        </p>
+        <Link
+          href="/"
+          className="inline-flex items-center justify-center rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-primary-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary-500"
+        >
+          Quay lại trang chủ
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col md:flex-row gap-8">
         <article className="w-full md:w-2/3">
           <div className="mb-8">
             <Link
-              href={`/categories/${article.category.slug}`}
+              href={`/categories/${article.category?.slug}`}
               className="inline-block text-sm font-medium text-primary-600 dark:text-primary-400 mb-3 hover:underline"
             >
-              {article.category.name}
+              {article.category?.name}
             </Link>
             <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-gray-50">
               {article.title}
@@ -204,29 +201,33 @@ export default async function ArticlePage({
             <div className="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 gap-4 mb-6">
               <div className="flex items-center">
                 <Calendar className="h-4 w-4 mr-1" />
-                <time dateTime={article.publishedAt}>
-                  {formatDate(article.publishedAt)}
+                <time dateTime={article.created_at}>
+                  {formatDate(article.created_at)}
                 </time>
               </div>
               <div className="flex items-center">
                 <Clock className="h-4 w-4 mr-1" />
-                <span>{article.readingTime} phút đọc</span>
+                <span>
+                  {getReadingTime(article?.content_length ?? 0)} phút đọc
+                </span>
               </div>
-              <div className="flex items-center">
-                <div className="flex items-center mr-1">
-                  <Image
-                    src={article.author.avatar || "/placeholder.svg"}
-                    alt={article.author.name}
+              <div className="flex items-center gap-1">
+                <Avatar>
+                  <AvatarImage
+                    src={article.author?.avatar_url ?? "/placeholder.svg"}
+                    alt={article.author?.name ?? ""}
                     width={24}
                     height={24}
-                    className="rounded-full mr-1"
                   />
-                </div>
-                <span>{article.author.name}</span>
+                  <AvatarFallback>
+                    {article.author?.name?.charAt(0).toUpperCase()}
+                  </AvatarFallback>
+                </Avatar>
+                <span>{article.author?.name ?? ""}</span>
               </div>
 
               {/* Hiển thị rating */}
-              <div className="flex items-center ml-auto">
+              {/* <div className="flex items-center ml-auto">
                 <ArticleRating
                   articleId={article.id}
                   initialRating={articleRating.average}
@@ -234,12 +235,12 @@ export default async function ArticlePage({
                   readOnly
                   size="sm"
                 />
-              </div>
+              </div> */}
             </div>
           </div>
 
           {/* Hiển thị thông tin series nếu bài viết thuộc series */}
-          {seriesInfo && (
+          {/* {seriesInfo && (
             <div className="mb-8 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
               <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
                 <span className="font-medium text-primary-600 dark:text-primary-400">
@@ -262,11 +263,11 @@ export default async function ArticlePage({
                 </span>
               </div>
             </div>
-          )}
+          )} */}
 
           <div className="relative w-full h-[400px] mb-8 rounded-lg overflow-hidden">
             <Image
-              src={article.coverImage || "/placeholder.svg"}
+              src={article.cover_image || "/placeholder.svg"}
               alt={article.title}
               fill
               className="object-cover"
@@ -275,7 +276,7 @@ export default async function ArticlePage({
           </div>
 
           {/* Article Actions trước nội dung */}
-          <div className="mb-6 border-y border-gray-200 dark:border-gray-800 py-3">
+          {/* <div className="mb-6 border-y border-gray-200 dark:border-gray-800 py-3">
             <ArticleActions
               articleId={article.id}
               initialUpvotes={articleStats.upvotes}
@@ -283,11 +284,11 @@ export default async function ArticlePage({
               initialComments={articleStats.comments}
               commentSectionId="comments"
             />
-          </div>
+          </div> */}
 
           {/* Table of Contents */}
           {tableOfContents.length > 0 && (
-            <div className="mb-8 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg md:hidden">
+            <div className="mb-8 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
               <TableOfContents toc={tableOfContents} />
             </div>
           )}
@@ -295,20 +296,11 @@ export default async function ArticlePage({
           {/* Nội dung bài viết */}
           <div className="flex flex-col md:flex-row gap-8">
             {/* Nội dung chính */}
-            <div className="flex-1">
-              <ArticleContent content={article.content} />
-            </div>
-
-            {/* TOC cho desktop */}
-            {tableOfContents.length > 0 && (
-              <div className="w-64 hidden md:block">
-                <TableOfContents toc={tableOfContents} />
-              </div>
-            )}
+            <ArticleContent content={article.content} />
           </div>
 
           {/* Article Rating sau nội dung */}
-          <div className="mt-8 border-t border-gray-200 dark:border-gray-800 pt-6 flex flex-col items-center">
+          {/* <div className="mt-8 border-t border-gray-200 dark:border-gray-800 pt-6 flex flex-col items-center">
             <h3 className="text-lg font-medium text-gray-900 dark:text-gray-50 mb-2">
               Bạn thấy bài viết này thế nào?
             </h3>
@@ -318,12 +310,12 @@ export default async function ArticlePage({
               totalRatings={articleRating.count}
               size="lg"
             />
-          </div>
+          </div> */}
 
           <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800">
             <div className="flex flex-wrap gap-2">
               <Tag className="h-5 w-5 text-gray-500 dark:text-gray-400" />
-              {article.tags.map((tag) => (
+              {article.tags?.map((tag) => (
                 <Link
                   key={tag.id}
                   href={`/tags/${tag.slug}`}
@@ -361,7 +353,7 @@ export default async function ArticlePage({
             <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-gray-50">
               Bài viết liên quan
             </h3>
-            <RelatedArticles articles={relatedArticles} />
+            <RelatedArticles article={article} />
           </div>
         </article>
 

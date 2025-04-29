@@ -53,8 +53,11 @@ export interface Article {
   author_id: string;
   seo: SEO;
   series_id: string | null;
-  category?: Category;
   content_length?: number;
+  category?: Category;
+  author?: Author;
+  tags?: Tag[];
+  ratings?: Rating;
 }
 
 // CATEGORIES
