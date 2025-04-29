@@ -6,7 +6,7 @@ import Sidebar from "@/components/layout/sidebar";
 import { getFeaturedArticles } from "@/lib/data";
 import { getCategories } from "@/services/categories";
 import { getListArticles } from "@/services/articles";
-import { LatestArticle } from "@/services/types";
+import Pagination from "@/components/pagination";
 
 export const metadata: Metadata = {
   title: "KidCare - Trang web về chăm sóc và nuôi dạy trẻ nhỏ",
@@ -20,14 +20,22 @@ export const metadata: Metadata = {
     "dạy con",
   ],
 };
+interface HomeProps {
+  searchParams: {
+    page?: string;
+  };
+}
 
-export default async function Home() {
+const PAGE_SIZE = 12;
+export default async function Home({ searchParams }: Readonly<HomeProps>) {
+  const page = parseInt((await searchParams).page ?? "1", 10);
+
   const featuredArticles = await getFeaturedArticles();
-  const { articles: latestArticles, total } = await getListArticles(1, 12);
+  const { articles: latestArticles, totalPages } = await getListArticles(
+    page,
+    PAGE_SIZE
+  );
   const categories = await getCategories();
-
-  console.log("latestArticles", latestArticles);
-  console.log("total", total);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -43,7 +51,17 @@ export default async function Home() {
             <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-50">
               Bài viết mới nhất
             </h2>
-            <LatestArticles articles={latestArticles as LatestArticle} />
+            <LatestArticles articles={latestArticles} />
+
+            {Boolean(totalPages && totalPages > 1) && (
+              <div className="mt-10">
+                <Pagination
+                  currentPage={page}
+                  totalPages={totalPages!}
+                  basePath={`/`}
+                />
+              </div>
+            )}
           </section>
 
           {/* Categories */}
