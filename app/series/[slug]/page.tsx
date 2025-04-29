@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       description: series.description,
       images: [
         {
-          url: series.coverImage,
+          url: series.cover_image,
           width: 1200,
           height: 630,
           alt: series.title,
@@ -71,7 +71,7 @@ export default async function SeriesPage({ params }: { params: { slug: string } 
         <div className="w-full md:w-2/3">
           <div className="relative w-full h-[300px] rounded-xl overflow-hidden mb-6">
             <Image
-              src={series.coverImage || "/placeholder.svg"}
+              src={series.cover_image || "/placeholder.svg"}
               alt={series.title}
               fill
               className="object-cover"
@@ -100,7 +100,7 @@ export default async function SeriesPage({ params }: { params: { slug: string } 
                   <div className="flex flex-col md:flex-row">
                     <div className="relative w-full md:w-1/3 aspect-video md:aspect-[4/3]">
                       <Image
-                        src={article.coverImage || "/placeholder.svg"}
+                        src={article.cover_image || "/placeholder.svg"}
                         alt={article.title}
                         fill
                         className="object-cover"

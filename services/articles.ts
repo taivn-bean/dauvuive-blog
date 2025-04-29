@@ -188,14 +188,32 @@ export const getArticlesByCategory = async (
 
     return {
       articles: data,
-      total: count,
+      total: count ?? 0,
       totalPages: Math.ceil((count ?? 0) / limit),
     };
   } catch (error) {
     console.error("Error fetching article:", error);
     return {
       articles: [],
+      total: 0,
       totalPages: 0,
     };
+  }
+};
+
+export const getPopularArticles = async (limit: number = 5) => {
+  try {
+    const { data, error } = await supabase
+      .from("view_popular_articles")
+      .select("*")
+      .order("score", { ascending: false })
+      .limit(limit);
+
+    if (error) throw error;
+
+    return data;
+  } catch (error) {
+    console.error("Error fetching popular articles:", error);
+    return [];
   }
 };

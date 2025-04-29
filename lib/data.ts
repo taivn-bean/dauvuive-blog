@@ -58,7 +58,7 @@ const series: Series[] = [
     title: "Hướng dẫn chăm sóc trẻ sơ sinh",
     slug: "huong-dan-cham-soc-tre-so-sinh",
     description: "Series bài viết hướng dẫn chi tiết cách chăm sóc trẻ sơ sinh từ 0-12 tháng tuổi",
-    coverImage: "/placeholder.svg?height=600&width=800&text=Chăm+sóc+trẻ+sơ+sinh",
+    cover_image: "/placeholder.svg?height=600&width=800&text=Chăm+sóc+trẻ+sơ+sinh",
     totalArticles: 3,
   },
   {
@@ -66,7 +66,7 @@ const series: Series[] = [
     title: "Dinh dưỡng cho trẻ mầm non",
     slug: "dinh-duong-cho-tre-mam-non",
     description: "Hướng dẫn về dinh dưỡng và chế độ ăn uống cho trẻ từ 1-5 tuổi",
-    coverImage: "/placeholder.svg?height=600&width=800&text=Dinh+dưỡng+mầm+non",
+    cover_image: "/placeholder.svg?height=600&width=800&text=Dinh+dưỡng+mầm+non",
     totalArticles: 2,
   },
 ]
@@ -121,7 +121,7 @@ Dạy trẻ ngủ trong nôi riêng sẽ giúp chúng phát triển kỹ năng t
 
 Quấn khăn giúp trẻ cảm thấy an toàn như trong bụng mẹ. Tuy nhiên, cần quấn đúng cách và chỉ áp dụng cho trẻ dưới 2-3 tháng tuổi.
     `,
-    coverImage: "/placeholder.svg?height=600&width=800",
+    cover_image: "/placeholder.svg?height=600&width=800",
     publishedAt: "2023-04-15T08:00:00Z",
     readingTime: 7,
     author: authors[0],
@@ -183,7 +183,7 @@ Giai đoạn từ 6-12 tháng tuổi là thời điểm quan trọng khi trẻ b
   - Trái cây: cắt miếng nhỏ, mềm
   - Ngũ cốc: cơm nát, mì, bánh mì mềm
     `,
-    coverImage: "/placeholder.svg?height=600&width=800",
+    cover_image: "/placeholder.svg?height=600&width=800",
     publishedAt: "2023-05-20T09:30:00Z",
     readingTime: 9,
     author: authors[0],
@@ -239,7 +239,7 @@ Phương pháp Montessori dựa trên các nguyên tắc cơ bản sau:
 - Gấp quần áo
 - Chăm sóc cây trồng
     `,
-    coverImage: "/placeholder.svg?height=600&width=800",
+    cover_image: "/placeholder.svg?height=600&width=800",
     publishedAt: "2023-06-05T10:15:00Z",
     readingTime: 12,
     author: authors[1],
@@ -279,7 +279,7 @@ Các dấu mốc phát triển là những kỹ năng cụ thể mà hầu hết
 - Theo dõi đồ vật di chuyển bằng mắt
 - Bắt đầu đạp chân
     `,
-    coverImage: "/placeholder.svg?height=600&width=800",
+    cover_image: "/placeholder.svg?height=600&width=800",
     publishedAt: "2023-06-28T07:45:00Z",
     readingTime: 15,
     author: authors[0],
@@ -321,7 +321,7 @@ Dinh dưỡng đóng vai trò quan trọng trong sự phát triển thể chất
 - Nguồn: thịt, cá, trứng, sữa, đậu, đỗ
 - Nhu cầu: 13-19g/ngày cho trẻ 1-3 tuổi; 19-25g/ngày cho trẻ 4-5 tuổi
     `,
-    coverImage: "/placeholder.svg?height=600&width=800",
+    cover_image: "/placeholder.svg?height=600&width=800",
     publishedAt: "2023-07-10T11:20:00Z",
     readingTime: 10,
     author: authors[0],
@@ -362,7 +362,7 @@ Phát triển vận động tinh mang lại nhiều lợi ích cho trẻ mầm n
 - Tăng cường sự tự tin và lòng tự trọng
 - Hỗ trợ phát triển nhận thức và sáng tạo
     `,
-    coverImage: "/placeholder.svg?height=600&width=800",
+    cover_image: "/placeholder.svg?height=600&width=800",
     publishedAt: "2023-08-05T14:30:00Z",
     readingTime: 14,
     author: authors[1],
@@ -394,10 +394,6 @@ export async function getArticles(limit = 10, page = 1): Promise<Article[]> {
 export async function getFeaturedArticles(): Promise<Article[]> {
   // Trả về 4 bài viết được xem nhiều nhất
   return [...articles].sort((a, b) => b.viewCount - a.viewCount).slice(0, 4)
-}
-
-export async function getPopularArticles(limit = 5): Promise<Article[]> {
-  return [...articles].sort((a, b) => b.viewCount - a.viewCount).slice(0, limit)
 }
 
 export async function getCategories(): Promise<Category[]> {

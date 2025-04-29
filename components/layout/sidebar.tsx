@@ -1,7 +1,8 @@
 import Link from "next/link"
 import Image from "next/image"
-import { getPopularArticles, getTags } from "@/lib/data"
 import { cn } from "@/lib/utils"
+import { getPopularArticles } from "@/services/articles"
+import { getAllTags } from "@/services/tags"
 
 interface SidebarProps {
   className?: string
@@ -9,7 +10,7 @@ interface SidebarProps {
 
 export default async function Sidebar({ className }: SidebarProps) {
   const popularArticles = await getPopularArticles(5)
-  const tags = await getTags()
+  const {tags} = await getAllTags()
 
   return (
     <aside className={cn("space-y-8", className)}>
@@ -29,7 +30,7 @@ export default async function Sidebar({ className }: SidebarProps) {
             <div key={article.id} className="flex gap-3">
               <div className="relative w-20 h-20 rounded-md overflow-hidden flex-shrink-0">
                 <Image
-                  src={article.coverImage || "/placeholder.svg"}
+                  src={article.cover_image || "/placeholder.svg"}
                   alt={article.title}
                   fill
                   className="object-cover"

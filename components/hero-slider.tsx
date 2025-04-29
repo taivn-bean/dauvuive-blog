@@ -63,7 +63,7 @@ export default function HeroSlider({ articles }: HeroSliderProps) {
         >
           <div className="relative w-full h-full">
             <Image
-              src={article.coverImage || "/placeholder.svg"}
+              src={article.cover_image || "/placeholder.svg"}
               alt={article.title}
               fill
               className="object-cover"

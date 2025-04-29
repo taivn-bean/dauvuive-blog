@@ -9,7 +9,7 @@ export default function RelatedPosts({ articles }: { articles: Article[] }) {
         <article key={article.id} className="border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
           <Link href={`/blog/${article.slug}`} className="block relative aspect-[16/10] w-full">
             <Image
-              src={article.coverImage || "/placeholder.svg"}
+              src={article.cover_image || "/placeholder.svg"}
               alt={article.title}
               fill
               className="object-cover transition-transform hover:scale-105 duration-300"

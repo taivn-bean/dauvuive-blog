@@ -17,7 +17,7 @@ export default function FeaturedArticles({ articles }: { articles: Article[] }) 
         <div className="relative group">
           <div className="relative overflow-hidden rounded-xl aspect-[16/9]">
             <Image
-              src={mainFeatured.coverImage || "/placeholder.svg"}
+              src={mainFeatured.cover_image || "/placeholder.svg"}
               alt={mainFeatured.title}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
@@ -53,7 +53,7 @@ export default function FeaturedArticles({ articles }: { articles: Article[] }) 
             <div key={article.id} className="relative group h-[140px]">
               <div className="relative overflow-hidden rounded-lg h-full">
                 <Image
-                  src={article.coverImage || "/placeholder.svg"}
+                  src={article.cover_image || "/placeholder.svg"}
                   alt={article.title}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"

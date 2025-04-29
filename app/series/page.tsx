@@ -41,7 +41,7 @@ export default async function SeriesListPage() {
                 <div className="flex flex-col md:flex-row">
                   <div className="relative w-full md:w-1/3 aspect-video md:aspect-square">
                     <Image
-                      src={series.coverImage || "/placeholder.svg"}
+                      src={series.cover_image || "/placeholder.svg"}
                       alt={series.title}
                       fill
                       className="object-cover"
