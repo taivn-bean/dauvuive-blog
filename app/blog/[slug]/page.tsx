@@ -89,7 +89,7 @@ export async function generateMetadata({
         },
         publisher: {
           "@type": "Organization",
-          name: "KidCare",
+          name: "Đậu Vui Vẻ",
           logo: {
             "@type": "ImageObject",
             url: "https://kidcare.vn/logo.png",

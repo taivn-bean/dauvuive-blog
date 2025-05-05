@@ -3,8 +3,8 @@ import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Chính sách bảo mật - KidCare",
-  description: "Chính sách bảo mật của KidCare - Trang web về chăm sóc và nuôi dạy trẻ nhỏ",
+  title: "Chính sách bảo mật - Đậu Vui Vẻ",
+  description: "Chính sách bảo mật của Đậu Vui Vẻ - Trang web về chăm sóc và nuôi dạy trẻ nhỏ",
 }
 
 export default function PrivacyPage() {
@@ -27,9 +27,9 @@ export default function PrivacyPage() {
 
           <h2>1. Giới thiệu</h2>
           <p>
-            KidCare ("chúng tôi", "của chúng tôi") cam kết bảo vệ quyền riêng tư của bạn. Chính sách bảo mật này giải
+            Đậu Vui Vẻ ("chúng tôi", "của chúng tôi") cam kết bảo vệ quyền riêng tư của bạn. Chính sách bảo mật này giải
             thích cách chúng tôi thu thập, sử dụng, tiết lộ, lưu trữ và bảo vệ thông tin của bạn khi bạn truy cập trang
-            web KidCare.vn ("Trang web").
+            web Dauvuive.vn ("Trang web").
           </p>
 
           <h2>2. Thông tin chúng tôi thu thập</h2>

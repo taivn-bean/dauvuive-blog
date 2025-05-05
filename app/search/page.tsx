@@ -13,8 +13,8 @@ interface SearchPageProps {
 export function generateMetadata({ searchParams }: SearchPageProps): Metadata {
   const query = searchParams.q || ""
   return {
-    title: `Kết quả tìm kiếm cho "${query}" - KidCare`,
-    description: `Tìm kiếm các bài viết về chăm sóc trẻ em với từ khóa "${query}" trên KidCare`,
+    title: `Kết quả tìm kiếm cho "${query}" - Đậu Vui Vẻ`,
+    description: `Tìm kiếm các bài viết về chăm sóc trẻ em với từ khóa "${query}" trên Đậu Vui Vẻ`,
     robots: {
       index: false,
       follow: true,

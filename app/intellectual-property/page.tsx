@@ -3,8 +3,8 @@ import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Quyền sở hữu trí tuệ - KidCare",
-  description: "Chính sách quyền sở hữu trí tuệ của KidCare - Trang web về chăm sóc và nuôi dạy trẻ nhỏ",
+  title: "Quyền sở hữu trí tuệ - Đậu Vui Vẻ",
+  description: "Chính sách quyền sở hữu trí tuệ của Đậu Vui Vẻ - Trang web về chăm sóc và nuôi dạy trẻ nhỏ",
 }
 
 export default function IntellectualPropertyPage() {
@@ -27,16 +27,16 @@ export default function IntellectualPropertyPage() {
 
           <h2>1. Quyền sở hữu nội dung</h2>
           <p>
-            Trang web KidCare.vn và tất cả nội dung, tính năng và chức năng của nó (bao gồm nhưng không giới hạn ở tất
+            Trang web Đậu Vui Vẻ.vn và tất cả nội dung, tính năng và chức năng của nó (bao gồm nhưng không giới hạn ở tất
             cả thông tin, phần mềm, văn bản, hình ảnh, âm thanh, video, biểu tượng, thiết kế) đều thuộc sở hữu của
-            KidCare, các bên cấp phép hoặc các nhà cung cấp nội dung khác và được bảo vệ bởi luật bản quyền, thương
+            Đậu Vui Vẻ, các bên cấp phép hoặc các nhà cung cấp nội dung khác và được bảo vệ bởi luật bản quyền, thương
             hiệu, bằng sáng chế, bí mật thương mại và các quyền sở hữu trí tuệ hoặc quyền sở hữu khác theo luật pháp
             Việt Nam và quốc tế.
           </p>
 
           <h2>2. Giấy phép sử dụng</h2>
           <p>
-            KidCare cấp cho bạn giấy phép có giới hạn, không độc quyền, không thể chuyển nhượng, có thể thu hồi để truy
+            Đậu Vui Vẻ cấp cho bạn giấy phép có giới hạn, không độc quyền, không thể chuyển nhượng, có thể thu hồi để truy
             cập và sử dụng Trang web chỉ cho mục đích cá nhân, phi thương mại của bạn. Giấy phép này không bao gồm:
           </p>
           <ul>
@@ -53,20 +53,20 @@ export default function IntellectualPropertyPage() {
           </ul>
           <p>
             Bất kỳ việc sử dụng Trang web không được cho phép rõ ràng trong các Điều khoản sử dụng đều bị nghiêm cấm và
-            sẽ chấm dứt giấy phép được cấp bởi KidCare.
+            sẽ chấm dứt giấy phép được cấp bởi Đậu Vui Vẻ.
           </p>
 
           <h2>3. Thương hiệu</h2>
           <p>
-            Tên "KidCare", logo KidCare và tất cả các tên, logo, tên sản phẩm và dịch vụ, thiết kế và khẩu hiệu liên
-            quan đều là thương hiệu của KidCare hoặc các chi nhánh hoặc bên cấp phép của nó. Bạn không được sử dụng các
-            thương hiệu này mà không có sự cho phép trước bằng văn bản của KidCare. Tất cả các thương hiệu khác, tên đã
+            Tên "Đậu Vui Vẻ", logo Đậu Vui Vẻ và tất cả các tên, logo, tên sản phẩm và dịch vụ, thiết kế và khẩu hiệu liên
+            quan đều là thương hiệu của Đậu Vui Vẻ hoặc các chi nhánh hoặc bên cấp phép của nó. Bạn không được sử dụng các
+            thương hiệu này mà không có sự cho phép trước bằng văn bản của Đậu Vui Vẻ. Tất cả các thương hiệu khác, tên đã
             đăng ký hoặc tên thương mại xuất hiện trên Trang web đều là tài sản của chủ sở hữu tương ứng.
           </p>
 
           <h2>4. Vi phạm bản quyền</h2>
           <p>
-            KidCare tôn trọng quyền sở hữu trí tuệ của người khác và yêu cầu người dùng của mình cũng làm như vậy. Nếu
+            Đậu Vui Vẻ tôn trọng quyền sở hữu trí tuệ của người khác và yêu cầu người dùng của mình cũng làm như vậy. Nếu
             bạn tin rằng bất kỳ nội dung nào trên Trang web vi phạm bản quyền của bạn, vui lòng gửi thông báo vi phạm
             bản quyền đến địa chỉ email: copyright@kidcare.vn với các thông tin sau:
           </p>
@@ -90,7 +90,7 @@ export default function IntellectualPropertyPage() {
 
           <h2>5. Nội dung người dùng</h2>
           <p>
-            Nếu bạn đăng, tải lên, gửi hoặc cung cấp bất kỳ nội dung nào trên Trang web, bạn cấp cho KidCare quyền không
+            Nếu bạn đăng, tải lên, gửi hoặc cung cấp bất kỳ nội dung nào trên Trang web, bạn cấp cho Đậu Vui Vẻ quyền không
             độc quyền, miễn phí bản quyền, vĩnh viễn, không thể thu hồi và có thể cấp phép lại để sử dụng, sao chép, sửa
             đổi, điều chỉnh, xuất bản, dịch thuật, tạo các tác phẩm phái sinh, phân phối, thực hiện và hiển thị nội dung
             đó trên Trang web và trên các phương tiện truyền thông khác.

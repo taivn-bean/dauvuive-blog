@@ -67,7 +67,7 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">KidCare</span>
+              <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">Đậu Vui Vẻ</span>
             </Link>
           </div>
 
@@ -122,7 +122,7 @@ export default function Header() {
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <div className="flex flex-col gap-6 pt-6">
                   <Link href="/" className="flex items-center">
-                    <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">KidCare</span>
+                    <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">Đậu Vui Vẻ</span>
                   </Link>
                   <nav className="flex flex-col space-y-4">
                     {navigation.map((item) => (

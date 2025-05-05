@@ -6,7 +6,7 @@ import { getAllSeries } from "@/lib/data"
 import Sidebar from "@/components/layout/sidebar"
 
 export const metadata: Metadata = {
-  title: "Series - KidCare",
+  title: "Series - Đậu Vui Vẻ",
   description: "Danh sách các series bài viết về chăm sóc và nuôi dạy trẻ nhỏ",
 }
 

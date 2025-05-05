@@ -4,8 +4,8 @@ import { ChevronRight, Tag } from "lucide-react"
 import { getTags } from "@/lib/data"
 
 export const metadata: Metadata = {
-  title: "Thẻ - KidCare",
-  description: "Khám phá tất cả các thẻ bài viết về chăm sóc và nuôi dạy trẻ nhỏ trên KidCare",
+  title: "Thẻ - Đậu Vui Vẻ",
+  description: "Khám phá tất cả các thẻ bài viết về chăm sóc và nuôi dạy trẻ nhỏ trên Đậu Vui Vẻ",
 }
 
 export default async function TagsPage() {

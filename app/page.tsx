@@ -8,7 +8,7 @@ import { getFeaturedArticles, getListArticles } from "@/services/articles";
 import Pagination from "@/components/pagination";
 
 export const metadata: Metadata = {
-  title: "KidCare - Trang web về chăm sóc và nuôi dạy trẻ nhỏ",
+  title: "Đậu Vui Vẻ - Trang web về chăm sóc và nuôi dạy trẻ nhỏ",
   description:
     "Thông tin hữu ích về chăm sóc sức khỏe và nuôi dạy trẻ nhỏ từ 0-10 tuổi",
   keywords: [

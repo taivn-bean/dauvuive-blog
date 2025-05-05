@@ -3,8 +3,8 @@ import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Chính sách Cookie - KidCare",
-  description: "Chính sách Cookie của KidCare - Trang web về chăm sóc và nuôi dạy trẻ nhỏ",
+  title: "Chính sách Cookie - Đậu Vui Vẻ",
+  description: "Chính sách Cookie của Đậu Vui Vẻ - Trang web về chăm sóc và nuôi dạy trẻ nhỏ",
 }
 
 export default function CookiesPage() {
@@ -33,7 +33,7 @@ export default function CookiesPage() {
           </p>
 
           <h2>2. Cách chúng tôi sử dụng Cookie</h2>
-          <p>Trang web KidCare.vn sử dụng cookie cho các mục đích sau:</p>
+          <p>Trang web Đậu Vui Vẻ.vn sử dụng cookie cho các mục đích sau:</p>
           <ul>
             <li>
               <strong>Cookie cần thiết:</strong> Những cookie này cần thiết để trang web hoạt động và không thể tắt

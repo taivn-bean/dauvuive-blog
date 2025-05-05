@@ -5,8 +5,8 @@ import { ChevronRight } from "lucide-react"
 import { getCategories } from "@/lib/data"
 
 export const metadata: Metadata = {
-  title: "Danh mục - KidCare",
-  description: "Khám phá tất cả các danh mục bài viết về chăm sóc và nuôi dạy trẻ nhỏ trên KidCare",
+  title: "Danh mục - Đậu Vui Vẻ",
+  description: "Khám phá tất cả các danh mục bài viết về chăm sóc và nuôi dạy trẻ nhỏ trên Đậu Vui Vẻ",
 }
 
 export default async function CategoriesPage() {

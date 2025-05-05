@@ -279,7 +279,7 @@ export default function FeedbackClientPage() {
                       Đăng ký nhận bản tin
                     </Label>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
-                      Tôi muốn nhận thông tin cập nhật và bài viết mới từ KidCare.
+                      Tôi muốn nhận thông tin cập nhật và bài viết mới từ Đậu Vui Vẻ.
                     </p>
                   </div>
                 </div>

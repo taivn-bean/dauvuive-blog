@@ -3,8 +3,8 @@ import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Điều khoản sử dụng - KidCare",
-  description: "Điều khoản sử dụng của KidCare - Trang web về chăm sóc và nuôi dạy trẻ nhỏ",
+  title: "Điều khoản sử dụng - Đậu Vui Vẻ",
+  description: "Điều khoản sử dụng của Đậu Vui Vẻ - Trang web về chăm sóc và nuôi dạy trẻ nhỏ",
 }
 
 export default function TermsPage() {
@@ -27,7 +27,7 @@ export default function TermsPage() {
 
           <h2>1. Chấp nhận điều khoản</h2>
           <p>
-            Bằng cách truy cập hoặc sử dụng trang web KidCare.vn ("Trang web"), bạn đồng ý tuân theo và chịu ràng buộc
+            Bằng cách truy cập hoặc sử dụng trang web Dauvuive.vn ("Trang web"), bạn đồng ý tuân theo và chịu ràng buộc
             bởi các Điều khoản sử dụng này. Nếu bạn không đồng ý với bất kỳ phần nào của các điều khoản này, bạn không
             được phép truy cập hoặc sử dụng Trang web.
           </p>
@@ -42,7 +42,7 @@ export default function TermsPage() {
           <h2>3. Quyền sở hữu trí tuệ</h2>
           <p>
             Trang web và tất cả nội dung, tính năng và chức năng của nó (bao gồm nhưng không giới hạn ở tất cả thông
-            tin, phần mềm, văn bản, hình ảnh, âm thanh, video, biểu tượng, thiết kế) đều thuộc sở hữu của KidCare, các
+            tin, phần mềm, văn bản, hình ảnh, âm thanh, video, biểu tượng, thiết kế) đều thuộc sở hữu của Đậu Vui Vẻ, các
             bên cấp phép hoặc các nhà cung cấp nội dung khác và được bảo vệ bởi luật bản quyền, thương hiệu, bằng sáng
             chế, bí mật thương mại và các quyền sở hữu trí tuệ hoặc quyền sở hữu khác.
           </p>
@@ -88,8 +88,8 @@ export default function TermsPage() {
           <h2>6. Liên kết đến trang web khác</h2>
           <p>
             Trang web có thể chứa các liên kết đến các trang web của bên thứ ba không thuộc sở hữu hoặc kiểm soát của
-            KidCare. KidCare không có quyền kiểm soát và không chịu trách nhiệm về nội dung, chính sách bảo mật hoặc
-            thực tiễn của bất kỳ trang web hoặc dịch vụ bên thứ ba nào. Bạn thừa nhận và đồng ý rằng KidCare sẽ không
+            Đậu Vui Vẻ. Đậu Vui Vẻ không có quyền kiểm soát và không chịu trách nhiệm về nội dung, chính sách bảo mật hoặc
+            thực tiễn của bất kỳ trang web hoặc dịch vụ bên thứ ba nào. Bạn thừa nhận và đồng ý rằng Đậu Vui Vẻ sẽ không
             chịu trách nhiệm hoặc có nghĩa vụ, trực tiếp hoặc gián tiếp, đối với bất kỳ thiệt hại hoặc mất mát nào gây
             ra hoặc bị cáo buộc là do hoặc liên quan đến việc sử dụng hoặc tin tưởng vào bất kỳ nội dung, hàng hóa hoặc
             dịch vụ nào có sẵn trên hoặc thông qua bất kỳ trang web hoặc dịch vụ nào như vậy.
@@ -97,16 +97,16 @@ export default function TermsPage() {
 
           <h2>7. Từ chối bảo đảm</h2>
           <p>
-            Trang web được cung cấp trên cơ sở "nguyên trạng" và "sẵn có". KidCare từ chối mọi bảo đảm dưới bất kỳ hình
+            Trang web được cung cấp trên cơ sở "nguyên trạng" và "sẵn có". Đậu Vui Vẻ từ chối mọi bảo đảm dưới bất kỳ hình
             thức nào, rõ ràng hay ngụ ý, bao gồm nhưng không giới hạn ở các bảo đảm ngụ ý về tính thương mại, sự phù hợp
-            cho một mục đích cụ thể và không vi phạm. KidCare không đảm bảo rằng Trang web sẽ đáp ứng yêu cầu của bạn,
+            cho một mục đích cụ thể và không vi phạm. Đậu Vui Vẻ không đảm bảo rằng Trang web sẽ đáp ứng yêu cầu của bạn,
             hoặc Trang web sẽ không bị gián đoạn, kịp thời, an toàn hoặc không có lỗi.
           </p>
 
           <h2>8. Giới hạn trách nhiệm</h2>
           <p>
-            Trong mọi trường hợp, KidCare, các giám đốc, nhân viên, đối tác, đại lý, nhà cung cấp hoặc chi nhánh của
-            KidCare sẽ không chịu trách nhiệm về bất kỳ thiệt hại gián tiếp, ngẫu nhiên, đặc biệt, hậu quả hoặc trừng
+            Trong mọi trường hợp, Đậu Vui Vẻ, các giám đốc, nhân viên, đối tác, đại lý, nhà cung cấp hoặc chi nhánh của
+            Đậu Vui Vẻ sẽ không chịu trách nhiệm về bất kỳ thiệt hại gián tiếp, ngẫu nhiên, đặc biệt, hậu quả hoặc trừng
             phạt nào, bao gồm nhưng không giới hạn ở, mất lợi nhuận, dữ liệu, sử dụng, uy tín hoặc các tổn thất vô hình
             khác, phát sinh từ (i) việc bạn truy cập hoặc sử dụng hoặc không thể truy cập hoặc sử dụng Trang web; (ii)
             bất kỳ hành vi hoặc nội dung nào của bất kỳ bên thứ ba nào trên Trang web; (iii) bất kỳ nội dung nào có được
@@ -115,8 +115,8 @@ export default function TermsPage() {
 
           <h2>9. Bồi thường</h2>
           <p>
-            Bạn đồng ý bồi thường, bảo vệ và giữ cho KidCare và các công ty con, chi nhánh, đối tác, nhân viên, nhà
-            thầu, nhà cung cấp dịch vụ, đại lý và nhà cấp phép của KidCare không bị tổn hại từ và chống lại bất kỳ khiếu
+            Bạn đồng ý bồi thường, bảo vệ và giữ cho Đậu Vui Vẻ và các công ty con, chi nhánh, đối tác, nhân viên, nhà
+            thầu, nhà cung cấp dịch vụ, đại lý và nhà cấp phép của Đậu Vui Vẻ không bị tổn hại từ và chống lại bất kỳ khiếu
             nại, trách nhiệm, thiệt hại, phán quyết, giải thưởng, tổn thất, chi phí, chi phí hoặc phí (bao gồm cả phí
             luật sư hợp lý) phát sinh từ hoặc liên quan đến việc bạn vi phạm các Điều khoản sử dụng này.
           </p>

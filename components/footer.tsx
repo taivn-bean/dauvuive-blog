@@ -10,10 +10,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="flex items-center">
-              <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">KidCare</span>
+              <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">Đậu Vui Vẻ</span>
             </Link>
             <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-md">
-              KidCare là trang web cung cấp thông tin hữu ích về chăm sóc sức khỏe và phương pháp nuôi dạy trẻ em từ
+              Đậu Vui Vẻ là trang web cung cấp thông tin hữu ích về chăm sóc sức khỏe và phương pháp nuôi dạy trẻ em từ
               0-10 tuổi.
             </p>
             <div className="flex space-x-4 mt-6">
@@ -135,7 +135,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-200 dark:border-gray-800 mt-10 pt-6 text-center">
           <p className="text-gray-600 dark:text-gray-400 text-sm">
-            © {currentYear} KidCare. Tất cả các quyền được bảo lưu.
+            © {currentYear} Đậu Vui Vẻ. Tất cả các quyền được bảo lưu.
           </p>
         </div>
       </div>
