@@ -32,3 +32,40 @@ export const getAllTags = async (
     };
   }
 };
+
+export const getTagsHasArticles = async () => {
+  try {
+    const { data, error } = await supabase
+      .from("tags")
+      .select("*, article_tags!inner(article_id)")
+      .overrideTypes<Tag[]>();
+
+    if (error) {
+      throw error;
+    }
+
+    return data;
+  } catch (error) {
+    console.error("Error fetching tag:", error);
+    return null;
+  }
+};
+
+export const getTag = async (slug: string) => {
+  try {
+    const { data, error } = await supabase
+      .from("tags")
+      .select("*")
+      .eq("slug", slug)
+      .overrideTypes<Tag[]>();
+
+    if (error) {
+      throw error;
+    }
+
+    return data[0];
+  } catch (error) {
+    console.error("Error fetching tag:", error);
+    return null;
+  }
+};

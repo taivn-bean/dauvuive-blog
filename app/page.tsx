@@ -3,9 +3,8 @@ import HeroSlider from "@/components/hero-slider";
 import LatestArticles from "@/components/latest-articles";
 import CategorySection from "@/components/category-section";
 import Sidebar from "@/components/layout/sidebar";
-import { getFeaturedArticles } from "@/lib/data";
 import { getCategories } from "@/services/categories";
-import { getListArticles } from "@/services/articles";
+import { getFeaturedArticles, getListArticles } from "@/services/articles";
 import Pagination from "@/components/pagination";
 
 export const metadata: Metadata = {
@@ -30,8 +29,8 @@ const PAGE_SIZE = 12;
 export default async function Home({ searchParams }: Readonly<HomeProps>) {
   const page = parseInt((await searchParams).page ?? "1", 10);
 
-  const featuredArticles = await getFeaturedArticles();
-  const { articles: latestArticles, totalPages } = await getListArticles(
+  const { articles: featuredArticles, totalPages } = await getFeaturedArticles();
+  const { articles: latestArticles } = await getListArticles(
     page,
     PAGE_SIZE
   );

@@ -2,7 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { getPopularArticles } from "@/services/articles"
-import { getAllTags } from "@/services/tags"
+import { getTagsHasArticles } from "@/services/tags"
 
 interface SidebarProps {
   className?: string
@@ -10,7 +10,7 @@ interface SidebarProps {
 
 export default async function Sidebar({ className }: SidebarProps) {
   const popularArticles = await getPopularArticles(5)
-  const {tags} = await getAllTags()
+  const tags = await getTagsHasArticles()
 
   return (
     <aside className={cn("space-y-8", className)}>
@@ -53,7 +53,7 @@ export default async function Sidebar({ className }: SidebarProps) {
       <div className="border border-gray-200 dark:border-gray-800 rounded-lg p-6">
         <h3 className="text-lg font-bold mb-4 text-gray-900 dark:text-gray-50">Thẻ</h3>
         <div className="flex flex-wrap gap-2">
-          {tags.map((tag) => (
+          {tags?.map((tag) => (
             <Link
               key={tag.id}
               href={`/tags/${tag.slug}`}

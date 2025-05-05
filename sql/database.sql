@@ -88,6 +88,7 @@ CREATE TABLE articles (
   content TEXT NOT NULL, -- markdown content
   cover_image TEXT,
   seo JSONB,
+  featured BOOLEAN DEFAULT FALSE,
   
   author_id UUID NOT NULL,
   series_id UUID,

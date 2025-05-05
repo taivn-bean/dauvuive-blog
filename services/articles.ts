@@ -217,3 +217,84 @@ export const getPopularArticles = async (limit: number = 5) => {
     return [];
   }
 };
+
+export const getFeaturedArticles = async (
+  page: number = 1,
+  limit: number = 5
+): Promise<{ articles: Article[]; totalPages: number; total: number }> => {
+  // Calculate the `offset` based on page number and limit
+  const offset = (page - 1) * limit;
+
+  try {
+    const { data, error, count } = await supabase
+      .from("articles")
+      .select(
+        `
+      id,
+      title,
+      excerpt,
+      slug,
+      featured,
+      seo,
+      cover_image,
+      created_at,
+      updated_at,
+      series:series_id (id, name, slug),
+      category:category_id (id, name, slug),
+      author:author_id (id, name, slug)
+    `,
+        { count: "exact" }
+      )
+      .range(offset, offset + limit - 1)
+      .eq("featured", true)
+      .order("created_at", { ascending: false })
+      .overrideTypes<Article[]>();
+
+    if (error) {
+      throw error;
+    }
+
+    return {
+      articles: data,
+      total: count ?? 0,
+      totalPages: Math.ceil((count ?? 0) / limit),
+    };
+  } catch (error) {
+    console.error("Error fetching articles:", error);
+    return {
+      articles: [],
+      total: 0,
+      totalPages: 0,
+    };
+  }
+};
+export const getArticlesByTag = async (
+  tagId: string,
+  page = 1,
+  limit = 10
+): Promise<{
+  page: number;
+  limit: number;
+  total: number;
+  total_pages: number;
+  articles: Article[];
+}> => {
+  const { data, error } = await supabase.rpc("get_articles_by_tag_with_page", {
+    input_tag_id: tagId,
+    input_limit: limit,
+    input_page: page,
+  });
+
+  if (error) {
+    console.error("Error fetching articles by tag:", error);
+    return {
+      page: 1,
+      limit: 10,
+      total: 0,
+      total_pages: 0,
+      articles: [],
+    };
+  }
+
+  return data;
+};

@@ -1,11 +1,4 @@
-// GLOBAL: SEO Interface
-interface SEO {
-  title: string;
-  description: string;
-  keywords: string[];
-  robots: string;
-  image: string;
-}
+
 
 // USERS
 export interface User {
@@ -40,6 +33,14 @@ export interface Author {
   avatar_url: string | null;
 }
 
+// GLOBAL: SEO Interface
+interface SEO {
+  title: string;
+  description: string;
+  keywords: string[];
+  robots: string;
+  image: string;
+}
 // ARTICLES
 export interface Article {
   id: string;
@@ -57,6 +58,7 @@ export interface Article {
   category?: Category;
   author?: Author;
   tags?: Tag[];
+  featured?: boolean;
   ratings?: Rating;
 }
 

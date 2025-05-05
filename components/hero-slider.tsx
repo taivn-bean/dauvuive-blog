@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
-import type { Article } from "@/lib/types"
+import type { Article } from "@/types/type"
 
 interface HeroSliderProps {
   articles: Article[]
@@ -53,7 +53,7 @@ export default function HeroSlider({ articles }: HeroSliderProps) {
       onMouseLeave={handleMouseLeave}
     >
       {/* Slides */}
-      {articles.map((article, index) => (
+      {articles?.map((article, index) => (
         <div
           key={article.id}
           className={cn(
@@ -72,17 +72,17 @@ export default function HeroSlider({ articles }: HeroSliderProps) {
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 text-white">
               <Link
-                href={`/categories/${article.category.slug}`}
+                href={`/categories/${article.category?.slug}`}
                 className="inline-block text-xs sm:text-sm font-medium bg-primary-600 hover:bg-primary-700 px-2.5 py-1 rounded mb-2 sm:mb-3 transition-colors"
               >
-                {article.category.name}
+                {article.category?.name}
               </Link>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3 line-clamp-2">
                 <Link href={`/blog/${article.slug}`} className="hover:text-primary-300 transition-colors">
                   {article.title}
                 </Link>
               </h2>
-              <p className="hidden sm:block text-sm sm:text-base text-gray-200 mb-3 line-clamp-2">{article.description}</p>
+              <p className="hidden sm:block text-sm sm:text-base text-gray-200 mb-3 line-clamp-2">{article.excerpt}</p>
               <Link
                 href={`/blog/${article.slug}`}
                 className="inline-flex items-center text-sm sm:text-base font-medium text-white hover:text-primary-300 transition-colors"
