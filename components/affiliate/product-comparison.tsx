@@ -72,7 +72,7 @@ export default function ProductComparison({
             {features.map((feature, index) => (
               <tr key={index}>
                 <td className="p-4 text-sm font-medium text-gray-500 dark:text-gray-400">{feature}</td>
-                {products.map((product, productIndex) => {
+                {products.map((product) => {
                   // Giả định: Mỗi sản phẩm có một mảng features chứa các tính năng
                   const hasFeature = Math.random() > 0.3 // Giả lập: 70% có tính năng
                   return (

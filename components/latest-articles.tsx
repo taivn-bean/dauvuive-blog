@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Calendar, Clock } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import type { Article } from "@/types/type";
-import { getReadingTime } from "@/utils/common";
+import { getReadingTime } from "@/lib/common";
 
 export default function LatestArticles({
   articles,

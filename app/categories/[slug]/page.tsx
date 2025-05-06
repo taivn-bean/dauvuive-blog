@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
@@ -7,6 +8,7 @@ import ArticleGrid from "@/components/article/article-grid";
 import Image from "next/image";
 import { getCategory } from "@/services/categories";
 import { getArticlesByCategory } from "@/services/articles";
+import { AsyncPageProps } from "@/types/type";
 
 export async function generateStaticParams() {
   // This would fetch all category slugs for static generation
@@ -22,9 +24,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const category = await getCategory(params.slug);
+  const category = await getCategory((await params)?.slug ?? "");
 
   if (!category) {
     return {
@@ -50,12 +52,9 @@ export async function generateMetadata({
 export default async function CategoryPage({
   params,
   searchParams,
-}: Readonly<{
-  params: { slug: string };
-  searchParams: { page?: string };
-}>) {
-  const page = Number(searchParams.page) || 1;
-  const category = await getCategory(params.slug);
+}: AsyncPageProps) {
+  const page = Number((await searchParams)?.page) || 1;
+  const category = await getCategory((await params)?.slug ?? "");
 
   if (!category) {
     return (
@@ -130,7 +129,7 @@ export default async function CategoryPage({
               <Pagination
                 currentPage={page}
                 totalPages={totalPages}
-                basePath={`/categories/${params.slug}`}
+                basePath={`/categories/${(await params)?.slug}`}
               />
             </div>
           )}

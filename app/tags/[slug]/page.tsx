@@ -6,6 +6,7 @@ import Pagination from "@/components/pagination";
 import ArticleGrid from "@/components/article/article-grid";
 import { getAllTags, getTag } from "@/services/tags";
 import { getArticlesByTag } from "@/services/articles";
+import { AsyncPageProps } from "@/types/type";
 
 export async function generateStaticParams() {
   const { tags } = await getAllTags();
@@ -17,9 +18,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const tag = await getTag(params.slug);
+  const tag = await getTag((await params)?.slug);
 
   if (!tag) {
     return {
@@ -41,12 +42,9 @@ export async function generateMetadata({
 export default async function TagPage({
   params,
   searchParams,
-}: Readonly<{
-  params: { slug: string };
-  searchParams: { page?: string };
-}>) {
-  const page = Number(searchParams.page) || 1;
-  const tag = await getTag(params.slug);
+}: AsyncPageProps) {
+  const page = Number((await searchParams)?.page) || 1;
+  const tag = await getTag((await params)?.slug ?? "");
 
   if (!tag) {
     return (
@@ -106,7 +104,7 @@ export default async function TagPage({
               <Pagination
                 currentPage={page}
                 totalPages={total_pages}
-                basePath={`/tags/${params.slug}`}
+                basePath={`/tags/${(await params)?.slug}`}
               />
             </div>
           )}

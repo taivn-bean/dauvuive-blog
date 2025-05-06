@@ -1,17 +1,16 @@
-import type { Metadata } from "next"
-import Link from "next/link"
-import { ChevronRight } from "lucide-react"
-import Sidebar from "@/components/layout/sidebar"
-import Pagination from "@/components/pagination"
-import { getArticles } from "@/lib/data"
-import ArticleGrid from "@/components/article/article-grid"
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
+import Sidebar from "@/components/layout/sidebar";
+import Pagination from "@/components/pagination";
+import { getListArticles } from "@/services/articles";
+import ArticleGrid from "@/components/article/article-grid";
+import { AsyncPageProps } from "@/types/type";
 
-interface SearchPageProps {
-  searchParams: { q?: string; page?: string }
-}
-
-export function generateMetadata({ searchParams }: SearchPageProps): Metadata {
-  const query = searchParams.q || ""
+export async function generateMetadata({
+  searchParams,
+}: AsyncPageProps): Promise<Metadata> {
+  const query = (await searchParams)?.q || "";
   return {
     title: `Kết quả tìm kiếm cho "${query}" - Đậu Vui Vẻ`,
     description: `Tìm kiếm các bài viết về chăm sóc trẻ em với từ khóa "${query}" trên Đậu Vui Vẻ`,
@@ -19,36 +18,41 @@ export function generateMetadata({ searchParams }: SearchPageProps): Metadata {
       index: false,
       follow: true,
     },
-  }
+  };
 }
 
-export default async function SearchPage({ searchParams }: SearchPageProps) {
-  const query = searchParams.q || ""
-  const page = Number(searchParams.page) || 1
-  const articlesPerPage = 9
+export default async function SearchPage({ searchParams }: AsyncPageProps) {
+  const query = (await searchParams)?.q || "";
+  const page = Number((await searchParams)?.page) || 1;
+  const articlesPerPage = 9;
 
   // Lấy tất cả bài viết và lọc theo từ khóa tìm kiếm
-  const allArticles = await getArticles(100) // Giả sử lấy tối đa 100 bài viết
+  const { articles } = await getListArticles(100); // Giả sử lấy tối đa 100 bài viết
   const filteredArticles = query
-    ? allArticles.filter(
+    ? articles.filter(
         (article) =>
           article.title.toLowerCase().includes(query.toLowerCase()) ||
-          article.description.toLowerCase().includes(query.toLowerCase()) ||
+          article.excerpt.toLowerCase().includes(query.toLowerCase()) ||
           article.content.toLowerCase().includes(query.toLowerCase()) ||
-          article.tags.some((tag) => tag.name.toLowerCase().includes(query.toLowerCase())) ||
-          article.category.name.toLowerCase().includes(query.toLowerCase()),
+          article.category?.name.toLowerCase().includes(query.toLowerCase())
       )
-    : []
+    : [];
 
   // Phân trang kết quả
-  const totalPages = Math.ceil(filteredArticles.length / articlesPerPage)
-  const startIndex = (page - 1) * articlesPerPage
-  const paginatedPosts = filteredArticles.slice(startIndex, startIndex + articlesPerPage)
+  const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
+  const startIndex = (page - 1) * articlesPerPage;
+  const paginatedPosts = filteredArticles.slice(
+    startIndex,
+    startIndex + articlesPerPage
+  );
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex items-center text-sm mb-6 text-gray-500 dark:text-gray-400">
-        <Link href="/" className="hover:text-primary-600 dark:hover:text-primary-400">
+        <Link
+          href="/"
+          className="hover:text-primary-600 dark:hover:text-primary-400"
+        >
           Trang chủ
         </Link>
         <ChevronRight className="h-4 w-4 mx-1" />
@@ -63,8 +67,8 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           {filteredArticles.length > 0
             ? `Tìm thấy ${filteredArticles.length} kết quả`
             : query
-              ? "Không tìm thấy kết quả nào phù hợp với từ khóa tìm kiếm của bạn."
-              : "Vui lòng nhập từ khóa để tìm kiếm."}
+            ? "Không tìm thấy kết quả nào phù hợp với từ khóa tìm kiếm của bạn."
+            : "Vui lòng nhập từ khóa để tìm kiếm."}
         </p>
       </div>
 
@@ -127,5 +131,5 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         <Sidebar className="w-full md:w-1/3 mt-8 md:mt-0" />
       </div>
     </div>
-  )
+  );
 }

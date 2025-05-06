@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ChevronRight } from "lucide-react"
-import type { Series, Article } from "@/lib/types"
+import type { Series, Article } from "@/types/type"
 import { cn } from "@/lib/utils"
 
 interface SeriesListProps {
@@ -15,16 +15,16 @@ export default function SeriesList({ series, articles, currentArticleId, classNa
   return (
     <div className={cn("border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden", className)}>
       <div className="relative h-40 w-full">
-        <Image src={series.cover_image || "/placeholder.svg"} alt={series.title} fill className="object-cover" />
+        <Image src={series.cover_image || "/placeholder.svg"} alt={series.name} fill className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30" />
         <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-          <h3 className="text-xl font-bold mb-1">{series.title}</h3>
-          <p className="text-sm text-gray-200">{series.totalArticles} bài viết</p>
+          <h3 className="text-xl font-bold mb-1">{series.name}</h3>
+          <p className="text-sm text-gray-200">{series.name} bài viết</p>
         </div>
       </div>
 
       <div className="p-4">
-        <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{series.description}</p>
+        <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{series.seo.description}</p>
 
         <h4 className="text-base font-medium text-gray-900 dark:text-gray-50 mb-3">Danh sách bài viết</h4>
 
@@ -40,7 +40,7 @@ export default function SeriesList({ series, articles, currentArticleId, classNa
               )}
             >
               <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm font-medium mr-3">
-                {article.seriesOrder || index + 1}
+                {index + 1}
               </div>
               <div className="flex-1 min-w-0">
                 <Link

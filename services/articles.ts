@@ -142,7 +142,7 @@ export const getRelatedArticles = async (
       return [];
     }
 
-    return data;
+    return data as unknown as Article[];
   } catch (err) {
     console.error("Unexpected error:", err);
     return [];

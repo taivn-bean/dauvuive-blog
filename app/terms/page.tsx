@@ -27,7 +27,7 @@ export default function TermsPage() {
 
           <h2>1. Chấp nhận điều khoản</h2>
           <p>
-            Bằng cách truy cập hoặc sử dụng trang web Dauvuive.vn ("Trang web"), bạn đồng ý tuân theo và chịu ràng buộc
+            Bằng cách truy cập hoặc sử dụng trang web Dauvuive.vn (&quot;Trang web&quot;), bạn đồng ý tuân theo và chịu ràng buộc
             bởi các Điều khoản sử dụng này. Nếu bạn không đồng ý với bất kỳ phần nào của các điều khoản này, bạn không
             được phép truy cập hoặc sử dụng Trang web.
           </p>
@@ -97,7 +97,7 @@ export default function TermsPage() {
 
           <h2>7. Từ chối bảo đảm</h2>
           <p>
-            Trang web được cung cấp trên cơ sở "nguyên trạng" và "sẵn có". Đậu Vui Vẻ từ chối mọi bảo đảm dưới bất kỳ hình
+            Trang web được cung cấp trên cơ sở &quot;nguyên trạng&quot; và &quot;sẵn có&quot;. Đậu Vui Vẻ từ chối mọi bảo đảm dưới bất kỳ hình
             thức nào, rõ ràng hay ngụ ý, bao gồm nhưng không giới hạn ở các bảo đảm ngụ ý về tính thương mại, sự phù hợp
             cho một mục đích cụ thể và không vi phạm. Đậu Vui Vẻ không đảm bảo rằng Trang web sẽ đáp ứng yêu cầu của bạn,
             hoặc Trang web sẽ không bị gián đoạn, kịp thời, an toàn hoặc không có lỗi.

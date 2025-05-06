@@ -2,7 +2,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { Calendar } from "lucide-react"
 import { formatDate } from "@/lib/utils"
-import type { Article } from "@/lib/types"
+import type { Article } from "@/types/type"
+import { getReadingTime } from "@/lib/common"
 
 export default function FeaturedArticles({ articles }: { articles: Article[] }) {
   // Chọn bài viết đặc sắc đầu tiên
@@ -28,10 +29,10 @@ export default function FeaturedArticles({ articles }: { articles: Article[] }) 
 
           <div className="absolute bottom-0 left-0 right-0 p-6">
             <Link
-              href={`/categories/${mainFeatured.category.slug}`}
+              href={`/categories/${mainFeatured.category?.slug}`}
               className="inline-block text-xs font-medium bg-primary-600 text-white px-2 py-1 rounded-sm mb-2"
             >
-              {mainFeatured.category.name}
+              {mainFeatured.category?.name}
             </Link>
             <h2 className="text-xl md:text-2xl font-bold text-white mb-2 line-clamp-2">
               <Link href={`/blog/${mainFeatured.slug}`} className="hover:text-primary-400">
@@ -40,9 +41,9 @@ export default function FeaturedArticles({ articles }: { articles: Article[] }) 
             </h2>
             <div className="flex items-center text-xs text-gray-300">
               <Calendar className="h-3 w-3 mr-1" />
-              <time dateTime={mainFeatured.publishedAt}>{formatDate(mainFeatured.publishedAt)}</time>
+              <time dateTime={mainFeatured.created_at}>{formatDate(mainFeatured.created_at)}</time>
               <span className="mx-2">•</span>
-              <span>{mainFeatured.readingTime} phút đọc</span>
+              <span>{getReadingTime(mainFeatured.content.length)} phút đọc</span>
             </div>
           </div>
         </div>
@@ -63,10 +64,10 @@ export default function FeaturedArticles({ articles }: { articles: Article[] }) 
 
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <Link
-                  href={`/categories/${article.category.slug}`}
+                  href={`/categories/${article.category?.slug}`}
                   className="inline-block text-xs font-medium bg-primary-600 text-white px-2 py-1 rounded-sm mb-1"
                 >
-                  {article.category.name}
+                  {article.category?.name}
                 </Link>
                 <h3 className="text-sm md:text-base font-bold text-white line-clamp-2">
                   <Link href={`/blog/${article.slug}`} className="hover:text-primary-400">

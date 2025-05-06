@@ -58,7 +58,7 @@ export default function IntellectualPropertyPage() {
 
           <h2>3. Thương hiệu</h2>
           <p>
-            Tên "Đậu Vui Vẻ", logo Đậu Vui Vẻ và tất cả các tên, logo, tên sản phẩm và dịch vụ, thiết kế và khẩu hiệu liên
+            Tên &quot;Đậu Vui Vẻ&quot;, logo Đậu Vui Vẻ và tất cả các tên, logo, tên sản phẩm và dịch vụ, thiết kế và khẩu hiệu liên
             quan đều là thương hiệu của Đậu Vui Vẻ hoặc các chi nhánh hoặc bên cấp phép của nó. Bạn không được sử dụng các
             thương hiệu này mà không có sự cho phép trước bằng văn bản của Đậu Vui Vẻ. Tất cả các thương hiệu khác, tên đã
             đăng ký hoặc tên thương mại xuất hiện trên Trang web đều là tài sản của chủ sở hữu tương ứng.

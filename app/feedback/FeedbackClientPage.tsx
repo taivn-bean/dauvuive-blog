@@ -56,6 +56,7 @@ export default function FeedbackClientPage() {
         subscribe: false,
       })
     } catch (err) {
+      console.error(err)
       setError("Có lỗi xảy ra khi gửi phản hồi. Vui lòng thử lại sau.")
     } finally {
       setIsSubmitting(false)

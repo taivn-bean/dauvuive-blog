@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
-import type { Article } from "@/lib/types"
+import type { Article } from "@/types/type"
+import { getReadingTime } from "@/lib/common"
 
 export default function RelatedPosts({ articles }: { articles: Article[] }) {
   return (
@@ -23,7 +24,7 @@ export default function RelatedPosts({ articles }: { articles: Article[] }) {
               </Link>
             </h3>
 
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{article.readingTime} phút đọc</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{getReadingTime(article.content.length)} phút đọc</p>
           </div>
         </article>
       ))}

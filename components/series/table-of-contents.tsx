@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
-import type { TableOfContents } from "@/lib/types"
+import type { TableOfContents } from "@/types/type"
 
 interface TableOfContentsProps {
   toc: TableOfContents[]

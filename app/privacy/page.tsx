@@ -27,9 +27,9 @@ export default function PrivacyPage() {
 
           <h2>1. Giới thiệu</h2>
           <p>
-            Đậu Vui Vẻ ("chúng tôi", "của chúng tôi") cam kết bảo vệ quyền riêng tư của bạn. Chính sách bảo mật này giải
+            Đậu Vui Vẻ (&quot;chúng tôi&quot;, &quot;của chúng tôi&quot;) cam kết bảo vệ quyền riêng tư của bạn. Chính sách bảo mật này giải
             thích cách chúng tôi thu thập, sử dụng, tiết lộ, lưu trữ và bảo vệ thông tin của bạn khi bạn truy cập trang
-            web Dauvuive.vn ("Trang web").
+            web Dauvuive.vn (&quot;Trang web&quot;).
           </p>
 
           <h2>2. Thông tin chúng tôi thu thập</h2>

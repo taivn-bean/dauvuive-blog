@@ -6,6 +6,7 @@ import Sidebar from "@/components/layout/sidebar";
 import { getCategories } from "@/services/categories";
 import { getFeaturedArticles, getListArticles } from "@/services/articles";
 import Pagination from "@/components/pagination";
+import { AsyncPageProps } from "@/types/type";
 
 export const metadata: Metadata = {
   title: "Đậu Vui Vẻ - Trang web về chăm sóc và nuôi dạy trẻ nhỏ",
@@ -19,21 +20,14 @@ export const metadata: Metadata = {
     "dạy con",
   ],
 };
-interface HomeProps {
-  searchParams: {
-    page?: string;
-  };
-}
 
 const PAGE_SIZE = 12;
-export default async function Home({ searchParams }: Readonly<HomeProps>) {
-  const page = parseInt((await searchParams).page ?? "1", 10);
+export default async function Home({ searchParams }: AsyncPageProps) {
+  const page = parseInt((await searchParams)?.page ?? "1", 10);
 
-  const { articles: featuredArticles, totalPages } = await getFeaturedArticles();
-  const { articles: latestArticles } = await getListArticles(
-    page,
-    PAGE_SIZE
-  );
+  const { articles: featuredArticles, totalPages } =
+    await getFeaturedArticles();
+  const { articles: latestArticles } = await getListArticles(page, PAGE_SIZE);
   const categories = await getCategories();
 
   return (

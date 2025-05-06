@@ -88,7 +88,8 @@ export default function Header() {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setSearchOpen(!searchOpen)}
+              // onClick={() => setSearchOpen(!searchOpen)}
+              disabled
               className="text-gray-600 dark:text-gray-300"
               aria-label="Tìm kiếm"
             >

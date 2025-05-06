@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { ChevronRight } from "lucide-react"
-import { getCategories } from "@/lib/data"
+import { getCategories } from "@/services/categories"
 
 export const metadata: Metadata = {
   title: "Danh mục - Đậu Vui Vẻ",

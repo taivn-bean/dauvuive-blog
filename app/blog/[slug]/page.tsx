@@ -1,25 +1,19 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, Tag } from "lucide-react";
-import {
-  getRelatedArticles,
-  getSeriesByArticle,
-  generateTableOfContents,
-} from "@/lib/data";
 import { formatDate } from "@/lib/utils";
 
 import Sidebar from "@/components/layout/sidebar";
-import ArticleRating from "@/components/article/article-rating";
-import ArticleActions from "@/components/article/article-actions";
 import CommentSection from "@/components/comment/comment-section";
-import SeriesList from "@/components/series/series-list";
 import TableOfContents from "@/components/series/table-of-contents";
 import ArticleContent from "@/components/article/article-content";
 import RelatedArticles from "@/components/article/related-articles";
 import { getArticle, getArticleSlugs } from "@/services/articles";
-import { getReadingTime } from "@/utils/common";
+import { generateTableOfContents, getReadingTime } from "@/lib/common";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { AsyncPageProps } from "@/types/type";
 
 // Generate static paths for all articles
 export async function generateStaticParams() {
@@ -31,9 +25,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const article = await getArticle(params.slug);
+  const article = await getArticle((await params).slug);
 
   if (!article) {
     return {
@@ -43,7 +37,7 @@ export async function generateMetadata({
   }
 
   // Giả định rằng article có thêm trường rating
-  const articleRating = article.ratings || { average: 0, count: 0 };
+  // const articleRating = article.ratings || { average: 0, count: 0 };
 
   return {
     title: article.title,
@@ -75,49 +69,16 @@ export async function generateMetadata({
       description: article.seo.description,
       images: [article.seo.image || article.cover_image || ""],
     },
-    // Thêm schema.org structured data cho rating
-    other: {
-      "script:ld+json": {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        headline: article.title,
-        image: article.seo.image,
-        datePublished: article.created_at,
-        author: {
-          "@type": "Person",
-          name: article.author?.name ?? "",
-        },
-        publisher: {
-          "@type": "Organization",
-          name: "Đậu Vui Vẻ",
-          logo: {
-            "@type": "ImageObject",
-            url: "https://kidcare.vn/logo.png",
-          },
-        },
-        description: article.seo.description,
-        // aggregateRating: {
-        //   "@type": "AggregateRating",
-        //   ratingValue: articleRating.average.toString(),
-        //   ratingCount: articleRating.count.toString(),
-        //   bestRating: "5",
-        //   worstRating: "1",
-        // },
-      },
-    },
   };
 }
 
-export default async function ArticlePage({
-  params,
-}: Readonly<{
-  params: { slug: string };
-}>) {
-  const article = await getArticle((await params).slug);
+export default async function ArticlePage({ params }: AsyncPageProps) {
+  const slug = (await params)?.slug;
+  const article = await getArticle(slug ?? "");
 
-  const seriesInfo = article?.series_id
-    ? await getSeriesByArticle(article?.id ?? "")
-    : null;
+  // const seriesInfo = article?.series_id
+  //   ? await getSeriesByArticle(article?.id ?? "")
+  //   : null;
   const tableOfContents = generateTableOfContents(article?.content ?? "");
 
   // Giả định rằng article có thêm các trường này
@@ -328,7 +289,7 @@ export default async function ArticlePage({
           </div>
 
           {/* Hiển thị danh sách bài viết trong series */}
-          {seriesInfo && (
+          {/* {seriesInfo && (
             <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800">
               <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-gray-50">
                 Bài viết khác trong series
@@ -339,7 +300,7 @@ export default async function ArticlePage({
                 currentArticleId={article.id}
               />
             </div>
-          )}
+          )} */}
 
           {/* Comment Section */}
           <div className="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">

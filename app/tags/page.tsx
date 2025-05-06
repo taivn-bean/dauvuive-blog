@@ -1,20 +1,24 @@
-import type { Metadata } from "next"
-import Link from "next/link"
-import { ChevronRight, Tag } from "lucide-react"
-import { getTags } from "@/lib/data"
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ChevronRight, Tag } from "lucide-react";
+import { getAllTags } from "@/services/tags";
 
 export const metadata: Metadata = {
   title: "Thẻ - Đậu Vui Vẻ",
-  description: "Khám phá tất cả các thẻ bài viết về chăm sóc và nuôi dạy trẻ nhỏ trên Đậu Vui Vẻ",
-}
+  description:
+    "Khám phá tất cả các thẻ bài viết về chăm sóc và nuôi dạy trẻ nhỏ trên Đậu Vui Vẻ",
+};
 
 export default async function TagsPage() {
-  const tags = await getTags()
+  const { tags } = await getAllTags();
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex items-center text-sm mb-6 text-gray-500 dark:text-gray-400">
-        <Link href="/" className="hover:text-primary-600 dark:hover:text-primary-400">
+        <Link
+          href="/"
+          className="hover:text-primary-600 dark:hover:text-primary-400"
+        >
           Trang chủ
         </Link>
         <ChevronRight className="h-4 w-4 mx-1" />
@@ -22,9 +26,12 @@ export default async function TagsPage() {
       </div>
 
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50">Tất cả thẻ</h1>
+        <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-50">
+          Tất cả thẻ
+        </h1>
         <p className="text-gray-600 dark:text-gray-300 mb-8">
-          Khám phá các bài viết theo từng thẻ để tìm thông tin phù hợp với nhu cầu của bạn.
+          Khám phá các bài viết theo từng thẻ để tìm thông tin phù hợp với nhu
+          cầu của bạn.
         </p>
 
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 border border-gray-200 dark:border-gray-700">
@@ -45,7 +52,9 @@ export default async function TagsPage() {
         </div>
 
         <div className="mt-12">
-          <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-50">Thẻ phổ biến</h2>
+          <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-50">
+            Thẻ phổ biến
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {tags.slice(0, 3).map((tag) => (
               <Link
@@ -55,10 +64,13 @@ export default async function TagsPage() {
               >
                 <div className="flex items-center mb-3">
                   <Tag className="h-5 w-5 mr-2 text-primary-600 dark:text-primary-400" />
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-gray-50">{tag.name}</h3>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-gray-50">
+                    {tag.name}
+                  </h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Khám phá các bài viết liên quan đến {tag.name.toLowerCase()} dành cho trẻ nhỏ
+                  Khám phá các bài viết liên quan đến {tag.name.toLowerCase()}{" "}
+                  dành cho trẻ nhỏ
                 </p>
               </Link>
             ))}
@@ -66,5 +78,5 @@ export default async function TagsPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,4 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export interface TableOfContents {
+  id: string
+  text: string
+  level: number
+  children?: TableOfContents[]
+}
 
+export interface AsyncPageProps {
+  params?: Promise<{ slug: string }>;
+  searchParams?: Promise<any>;
+}
 
 // USERS
 export interface User {
@@ -45,7 +56,7 @@ interface SEO {
 export interface Article {
   id: string;
   created_at: string;
-  updated_at: string;
+  updated_at?: string;
   title: string;
   excerpt: string;
   slug: string;

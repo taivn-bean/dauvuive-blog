@@ -47,6 +47,7 @@ export default function ContactPageClient() {
         message: "",
       })
     } catch (err) {
+      console.error(err)
       setError("Có lỗi xảy ra khi gửi tin nhắn. Vui lòng thử lại sau.")
     } finally {
       setIsSubmitting(false)

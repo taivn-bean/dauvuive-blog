@@ -28,7 +28,7 @@ interface CommentSectionProps {
   className?: string
 }
 
-export default function CommentSection({ articleId, initialComments = [], className }: CommentSectionProps) {
+export default function CommentSection({ initialComments = [], className }: CommentSectionProps) {
   const [comments, setComments] = useState<Comment[]>(initialComments)
   const [replyingTo, setReplyingTo] = useState<string | null>(null)
   const [isClient, setIsClient] = useState(false)
