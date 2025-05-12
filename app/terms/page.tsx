@@ -137,7 +137,7 @@ export default function TermsPage() {
           <h2>12. Liên hệ</h2>
           <p>
             Nếu bạn có bất kỳ câu hỏi nào về các Điều khoản sử dụng này, vui lòng liên hệ với chúng tôi tại:
-            terms@kidcare.vn
+            terms@dauvuive.vn
           </p>
         </div>
       </div>

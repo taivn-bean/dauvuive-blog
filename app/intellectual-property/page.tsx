@@ -68,7 +68,7 @@ export default function IntellectualPropertyPage() {
           <p>
             Đậu Vui Vẻ tôn trọng quyền sở hữu trí tuệ của người khác và yêu cầu người dùng của mình cũng làm như vậy. Nếu
             bạn tin rằng bất kỳ nội dung nào trên Trang web vi phạm bản quyền của bạn, vui lòng gửi thông báo vi phạm
-            bản quyền đến địa chỉ email: copyright@kidcare.vn với các thông tin sau:
+            bản quyền đến địa chỉ email: copyright@dauvuive.vn với các thông tin sau:
           </p>
           <ul>
             <li>
@@ -104,7 +104,7 @@ export default function IntellectualPropertyPage() {
           <h2>6. Liên hệ</h2>
           <p>
             Nếu bạn có bất kỳ câu hỏi nào về Chính sách quyền sở hữu trí tuệ này, vui lòng liên hệ với chúng tôi tại:
-            copyright@kidcare.vn
+            copyright@dauvuive.vn
           </p>
         </div>
       </div>

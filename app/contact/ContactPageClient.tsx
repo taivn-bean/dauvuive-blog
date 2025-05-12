@@ -92,8 +92,8 @@ export default function ContactPageClient() {
                 <div>
                   <h3 className="font-medium text-gray-900 dark:text-gray-50">Email</h3>
                   <p className="text-gray-600 dark:text-gray-300 mt-1">
-                    <a href="mailto:info@kidcare.vn" className="hover:text-primary-600 dark:hover:text-primary-400">
-                      info@kidcare.vn
+                    <a href="mailto:info@dauvuive.vn" className="hover:text-primary-600 dark:hover:text-primary-400">
+                      info@dauvuive.vn
                     </a>
                   </p>
                 </div>

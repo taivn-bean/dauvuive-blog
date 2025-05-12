@@ -10,7 +10,6 @@ export default async function RelatedArticles({
 }: Readonly<{
   article: Article;
 }>) {
-  console.log("article", article);
   const articles = await getRelatedArticles(
     article?.id,
     article?.category?.id,

@@ -128,7 +128,7 @@ export default function PrivacyPage() {
             tôi xử lý thông tin của bạn, vui lòng liên hệ với chúng tôi tại:
           </p>
           <p>
-            Email: privacy@kidcare.vn
+            Email: privacy@dauvuive.vn
             <br />
             Địa chỉ: 123 Đường ABC, Quận XYZ, Thành phố Hồ Chí Minh, Việt Nam
             <br />

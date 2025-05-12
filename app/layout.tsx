@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "vi_VN",
-    url: "https://kidcare.vn",
+    url: "https://dauvuive.vn",
     title: "Đậu Vui Vẻ - Trang web về chăm sóc và nuôi dạy trẻ nhỏ",
     description: "Thông tin hữu ích về chăm sóc sức khỏe và nuôi dạy trẻ nhỏ từ 0-10 tuổi",
     siteName: "Đậu Vui Vẻ",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Đậu Vui Vẻ - Trang web về chăm sóc và nuôi dạy trẻ nhỏ",
     description: "Thông tin hữu ích về chăm sóc sức khỏe và nuôi dạy trẻ nhỏ từ 0-10 tuổi",
-    creator: "@kidcare",
+    creator: "@dauvuive",
   },
   robots: {
     index: true,

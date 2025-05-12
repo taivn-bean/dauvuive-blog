@@ -90,7 +90,7 @@ export default function CookiesPage() {
           <h2>6. Liên hệ với chúng tôi</h2>
           <p>
             Nếu bạn có bất kỳ câu hỏi nào về cách chúng tôi sử dụng cookie, vui lòng liên hệ với chúng tôi tại:
-            privacy@kidcare.vn
+            privacy@dauvuive.vn
           </p>
         </div>
       </div>
