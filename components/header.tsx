@@ -1,16 +1,17 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { useTheme } from "next-themes"
-import { Menu, Search, Moon, Sun } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { cn } from "@/lib/utils"
-import { useRouter } from "next/navigation"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useTheme } from "next-themes";
+import { Menu, Search, Moon, Sun } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
+import AuthButton from "./auth/auth-button";
 
 const navigation = [
   { name: "Trang chủ", href: "/" },
@@ -18,41 +19,41 @@ const navigation = [
   { name: "Dinh dưỡng", href: "/categories/dinh-duong" },
   { name: "Giáo dục", href: "/categories/giao-duc" },
   { name: "Phát triển", href: "/categories/phat-trien" },
-]
+];
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState("")
-  const router = useRouter()
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
 
   // After mounting, we can safely show the UI that depends on the theme
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
-        setIsScrolled(true)
+        setIsScrolled(true);
       } else {
-        setIsScrolled(false)
+        setIsScrolled(false);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (searchQuery.trim()) {
-      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`)
-      setSearchOpen(false)
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchOpen(false);
     }
-  }
+  };
 
   return (
     <header
@@ -60,14 +61,16 @@ export default function Header() {
         "sticky top-0 z-50 w-full border-b transition-all",
         isScrolled
           ? "border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
-          : "border-transparent bg-background",
+          : "border-transparent bg-background"
       )}
     >
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">Đậu Vui Vẻ</span>
+              <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">
+                Đậu Vui Vẻ
+              </span>
             </Link>
           </div>
 
@@ -85,7 +88,7 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <Button
+            {/* <Button
               variant="ghost"
               size="icon"
               // onClick={() => setSearchOpen(!searchOpen)}
@@ -94,7 +97,8 @@ export default function Header() {
               aria-label="Tìm kiếm"
             >
               <Search className="h-5 w-5" />
-            </Button>
+            </Button> */}
+            <AuthButton />
 
             {mounted && (
               <Button
@@ -102,9 +106,17 @@ export default function Header() {
                 size="icon"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 className="text-gray-600 dark:text-gray-300"
-                aria-label={theme === "dark" ? "Chuyển sang chế độ sáng" : "Chuyển sang chế độ tối"}
+                aria-label={
+                  theme === "dark"
+                    ? "Chuyển sang chế độ sáng"
+                    : "Chuyển sang chế độ tối"
+                }
               >
-                {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                {theme === "dark" ? (
+                  <Sun className="h-5 w-5" />
+                ) : (
+                  <Moon className="h-5 w-5" />
+                )}
               </Button>
             )}
 
@@ -123,7 +135,9 @@ export default function Header() {
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <div className="flex flex-col gap-6 pt-6">
                   <Link href="/" className="flex items-center">
-                    <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">Đậu Vui Vẻ</span>
+                    <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">
+                      Đậu Vui Vẻ
+                    </span>
                   </Link>
                   <nav className="flex flex-col space-y-4">
                     {navigation.map((item) => (
@@ -159,5 +173,5 @@ export default function Header() {
         )}
       </div>
     </header>
-  )
+  );
 }

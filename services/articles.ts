@@ -1,7 +1,9 @@
 // lib/data.ts
 
-import supabase from "@/supabase/client";
 import { Article } from "@/types/type";
+import { createClient } from "@/utils/supabase/client";
+
+const supabase = createClient();
 
 export const getListArticles = async (page: number = 1, limit: number = 5) => {
   // Calculate the `offset` based on page number and limit

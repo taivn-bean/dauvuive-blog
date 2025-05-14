@@ -1,5 +1,8 @@
 import { Category } from "@/types/type";
-import supabase from "@/supabase/client";
+
+import { createClient } from "@/utils/supabase/client";
+
+const supabase = createClient();
 
 export const getCategories = async (): Promise<Category[]> => {
   try {
@@ -17,7 +20,9 @@ export const getCategories = async (): Promise<Category[]> => {
   }
 };
 
-export const getCategory = async (slug: string): Promise<Category | undefined> => {
+export const getCategory = async (
+  slug: string
+): Promise<Category | undefined> => {
   try {
     const { data, error } = await supabase
       .from("categories")

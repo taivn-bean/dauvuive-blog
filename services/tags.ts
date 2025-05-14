@@ -1,5 +1,8 @@
-import supabase from "@/supabase/client";
 import { Tag } from "@/types/type";
+
+import { createClient } from "@/utils/supabase/client";
+
+const supabase = createClient();
 
 export const getAllTags = async (
   page = 1,
