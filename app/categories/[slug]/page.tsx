@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
@@ -112,7 +111,7 @@ export default async function CategoryPage({
 
       <div className="relative w-full h-[400px] mb-8 rounded-lg overflow-hidden">
         <Image
-          src={category.cover_image || "/placeholder.svg"}
+          src={category.cover_image ?? "/placeholder.svg"}
           alt={category.name}
           fill
           quality={100}

@@ -81,52 +81,6 @@ export default async function ArticlePage({ params }: AsyncPageProps) {
   //   : null;
   const tableOfContents = generateTableOfContents(article?.content ?? "");
 
-  // Giả định rằng article có thêm các trường này
-  // const articleRating = article.rating || { average: 4.2, count: 15 };
-  // const articleStats = article.stats || {
-  //   upvotes: 24,
-  //   downvotes: 3,
-  //   comments: 8,
-  // };
-
-  // Giả định rằng có sẵn dữ liệu bình luận
-  const mockComments = [
-    {
-      id: "comment-1",
-      author: {
-        name: "Nguyễn Văn A",
-        avatar: "/placeholder.svg?height=40&width=40",
-      },
-      content: "Bài viết rất hữu ích, cảm ơn tác giả đã chia sẻ!",
-      createdAt: "2023-06-15T08:30:00Z",
-      likes: 5,
-      replies: [
-        {
-          id: "reply-1",
-          author: {
-            name: "Trần Thị B",
-            avatar: "/placeholder.svg?height=40&width=40",
-          },
-          content: "Mình cũng thấy vậy, đã áp dụng và thấy hiệu quả.",
-          createdAt: "2023-06-15T09:15:00Z",
-          likes: 2,
-        },
-      ],
-    },
-    {
-      id: "comment-2",
-      author: {
-        name: "Lê Văn C",
-        avatar: "/placeholder.svg?height=40&width=40",
-      },
-      content:
-        "Mình có thắc mắc về phần dinh dưỡng, liệu có thể thay thế sữa bò bằng sữa đậu nành không?",
-      createdAt: "2023-06-16T10:45:00Z",
-      likes: 3,
-      replies: [],
-    },
-  ];
-
   if (!article) {
     return (
       <div className="container mx-auto px-4 py-16 text-center">

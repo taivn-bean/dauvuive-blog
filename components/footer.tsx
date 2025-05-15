@@ -126,12 +126,12 @@ export default function Footer() {
         </div>
 
         {/* Advertisement Banner */}
-        <div className="mt-10 border border-gray-200 dark:border-gray-800 rounded-lg p-4 bg-gray-100 dark:bg-gray-800 text-center">
+        {/* <div className="mt-10 border border-gray-200 dark:border-gray-800 rounded-lg p-4 bg-gray-100 dark:bg-gray-800 text-center">
           <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">Quảng cáo</p>
           <div className="h-[120px] flex items-center justify-center bg-gray-200 dark:bg-gray-700 rounded">
             <p className="text-gray-500 dark:text-gray-400">Banner quảng cáo</p>
           </div>
-        </div>
+        </div> */}
 
         <div className="border-t border-gray-200 dark:border-gray-800 mt-10 pt-6 text-center">
           <p className="text-gray-600 dark:text-gray-400 text-sm">
