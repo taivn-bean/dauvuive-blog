@@ -15,7 +15,7 @@ export default function SeriesList({ series, articles, currentArticleId, classNa
   return (
     <div className={cn("border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden", className)}>
       <div className="relative h-40 w-full">
-        <Image src={series.cover_image || "/placeholder.svg"} alt={series.name} fill className="object-cover" />
+        <Image src={series.cover_image || "/images/placeholder.png"} alt={series.name} fill className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30" />
         <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
           <h3 className="text-xl font-bold mb-1">{series.name}</h3>

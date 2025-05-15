@@ -85,7 +85,7 @@ import { AsyncPageProps } from "@/types/type";
 //         <div className="w-full md:w-2/3">
 //           <div className="relative w-full h-[300px] rounded-xl overflow-hidden mb-6">
 //             <Image
-//               src={series.cover_image || "/placeholder.svg"}
+//               src={series.cover_image || "/images/placeholder.png"}
 //               alt={series.title}
 //               fill
 //               className="object-cover"
@@ -118,7 +118,7 @@ import { AsyncPageProps } from "@/types/type";
 //                   <div className="flex flex-col md:flex-row">
 //                     <div className="relative w-full md:w-1/3 aspect-video md:aspect-[4/3]">
 //                       <Image
-//                         src={article.cover_image || "/placeholder.svg"}
+//                         src={article.cover_image || "/images/placeholder.png"}
 //                         alt={article.title}
 //                         fill
 //                         className="object-cover"

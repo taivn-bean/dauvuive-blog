@@ -18,7 +18,7 @@ export default function InContentAffiliate({ product, className = "", variant = 
         <div className="flex items-center gap-3">
           <div className="relative w-12 h-12 flex-shrink-0">
             <Image
-              src={product.imageUrl || "/placeholder.svg"}
+              src={product.imageUrl || "/images/placeholder.png"}
               alt={product.title}
               fill
               className="object-contain"
@@ -58,7 +58,7 @@ export default function InContentAffiliate({ product, className = "", variant = 
         <div className="flex gap-4">
           <div className="relative w-24 h-24 flex-shrink-0">
             <Image
-              src={product.imageUrl || "/placeholder.svg"}
+              src={product.imageUrl || "/images/placeholder.png"}
               alt={product.title}
               fill
               className="object-contain"

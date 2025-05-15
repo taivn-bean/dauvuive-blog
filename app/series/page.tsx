@@ -42,7 +42,7 @@ import { AsyncPageProps } from "@/types/type";
 //                 <div className="flex flex-col md:flex-row">
 //                   <div className="relative w-full md:w-1/3 aspect-video md:aspect-square">
 //                     <Image
-//                       src={series.cover_image || "/placeholder.svg"}
+//                       src={series.cover_image || "/images/placeholder.png"}
 //                       alt={series.title}
 //                       fill
 //                       className="object-cover"

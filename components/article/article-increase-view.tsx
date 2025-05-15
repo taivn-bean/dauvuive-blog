@@ -15,7 +15,7 @@ export default function ArticleIncreaseView({
       increaseArticleView(articleId);
       console.log("Increased view for article:", articleId);
     }, INCREASE_AFTER);
-  }, []);
+  }, [articleId]);
 
   return null;
 }

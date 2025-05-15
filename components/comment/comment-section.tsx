@@ -159,7 +159,7 @@ export default function CommentSection({ initialComments = [], className }: Comm
             <div key={comment.id} className="comment-item">
               <div className="flex gap-3">
                 <Avatar>
-                  <AvatarImage src={comment.author.avatar || "/placeholder.svg"} alt={comment.author.name} />
+                  <AvatarImage src={comment.author.avatar || "/images/placeholder.png"} alt={comment.author.name} />
                   <AvatarFallback>{comment.author.name.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <div className="flex-1">
@@ -218,7 +218,7 @@ export default function CommentSection({ initialComments = [], className }: Comm
                         <div key={reply.id} className="py-3">
                           <div className="flex gap-3">
                             <Avatar className="h-8 w-8">
-                              <AvatarImage src={reply.author.avatar || "/placeholder.svg"} alt={reply.author.name} />
+                              <AvatarImage src={reply.author.avatar || "/images/placeholder.png"} alt={reply.author.name} />
                               <AvatarFallback>{reply.author.name.charAt(0)}</AvatarFallback>
                             </Avatar>
                             <div className="flex-1">

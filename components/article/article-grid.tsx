@@ -17,7 +17,7 @@ export default function ArticleGrid({ articles }: { articles: Article[] }) {
             className="block relative aspect-[16/10] w-full"
           >
             <Image
-              src={article.cover_image || "/placeholder.svg"}
+              src={article.cover_image || "/images/placeholder.png"}
               alt={article.title}
               fill
               className="object-cover transition-transform hover:scale-105 duration-300"

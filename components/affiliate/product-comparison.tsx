@@ -38,7 +38,7 @@ export default function ProductComparison({
                 <th key={product.id} className="p-4 text-center">
                   <div className="relative w-20 h-20 mx-auto mb-2">
                     <Image
-                      src={product.imageUrl || "/placeholder.svg"}
+                      src={product.imageUrl || "/images/placeholder.png"}
                       alt={product.title}
                       fill
                       className="object-contain"

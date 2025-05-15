@@ -111,7 +111,7 @@ export default async function CategoryPage({
 
       <div className="relative w-full h-[400px] mb-8 rounded-lg overflow-hidden">
         <Image
-          src={category.cover_image ?? "/placeholder.svg"}
+          src={category.cover_image ?? "/images/placeholder.png"}
           alt={category.name}
           fill
           quality={100}

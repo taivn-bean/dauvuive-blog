@@ -35,7 +35,7 @@ export default async function Sidebar({ className }: SidebarProps) {
             <div key={article.id} className="flex gap-3">
               <div className="relative w-20 h-20 rounded-md overflow-hidden flex-shrink-0">
                 <Image
-                  src={article.cover_image || "/placeholder.svg"}
+                  src={article.cover_image || "/images/placeholder.png"}
                   alt={article.title}
                   fill
                   className="object-cover"

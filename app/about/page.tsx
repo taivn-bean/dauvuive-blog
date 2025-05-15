@@ -24,7 +24,7 @@ export default function AboutPage() {
 
         <div className="relative w-full h-[400px] mb-8 rounded-lg overflow-hidden">
           <Image
-            src="/placeholder.svg?height=800&width=1600"
+            src="/images/placeholder.png?height=800&width=1600"
             alt="Đội ngũ Đậu Vui Vẻ"
             fill
             className="object-cover"

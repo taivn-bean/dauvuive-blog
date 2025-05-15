@@ -14,7 +14,7 @@ export default function LatestArticles({
           <div className="relative w-full md:w-1/3 aspect-video md:aspect-[4/3] rounded-lg overflow-hidden">
             <Link href={`/blog/${article.slug}`}>
               <Image
-                src={article.cover_image ?? "/placeholder.svg"}
+                src={article.cover_image ?? "/images/placeholder.png"}
                 alt={article.title}
                 fill
                 className="object-cover transition-transform hover:scale-105 duration-300"

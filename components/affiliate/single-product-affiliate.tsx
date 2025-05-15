@@ -38,7 +38,7 @@ export default function SingleProductAffiliate({
         <div className="p-4 flex items-center gap-4">
           <div className="relative w-16 h-16 flex-shrink-0">
             <Image
-              src={product.imageUrl || "/placeholder.svg"}
+              src={product.imageUrl || "/images/placeholder.png"}
               alt={product.title}
               fill
               className="object-contain"
@@ -75,7 +75,7 @@ export default function SingleProductAffiliate({
         <div className="flex">
           <div className="relative w-1/3 aspect-square">
             <Image
-              src={product.imageUrl || "/placeholder.svg"}
+              src={product.imageUrl || "/images/placeholder.png"}
               alt={product.title}
               fill
               className="object-cover"
@@ -127,7 +127,7 @@ export default function SingleProductAffiliate({
     >
       <div className="relative aspect-[4/3] w-full">
         <Image
-          src={product.imageUrl || "/placeholder.svg"}
+          src={product.imageUrl || "/images/placeholder.png"}
           alt={product.title}
           fill
           className="object-cover"

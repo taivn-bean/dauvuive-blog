@@ -37,7 +37,7 @@ export default async function CategoriesPage() {
             >
               <div className="relative h-48 w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
                 <Image
-                  src={`/placeholder.svg?height=400&width=800&text=${encodeURIComponent(category.name)}`}
+                  src={`/images/placeholder.png?height=400&width=800&text=${encodeURIComponent(category.name)}`}
                   alt={category.name}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"

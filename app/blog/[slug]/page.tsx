@@ -56,7 +56,10 @@ export async function generateMetadata({
       tags: article.tags?.map((tag) => tag.name),
       images: [
         {
-          url: article.seo.image || article.cover_image || "",
+          url:
+            article.seo.image ||
+            article.cover_image ||
+            "/images/placeholder.png",
           width: 1200,
           height: 630,
           alt: article.title,
@@ -127,7 +130,7 @@ export default async function ArticlePage({ params }: AsyncPageProps) {
               <div className="flex items-center gap-1">
                 <Avatar>
                   <AvatarImage
-                    src={article.author?.avatar_url ?? "/placeholder.svg"}
+                    src={article.author?.avatar_url ?? "/images/placeholder.png"}
                     alt={article.author?.name ?? ""}
                     width={24}
                     height={24}
@@ -180,7 +183,7 @@ export default async function ArticlePage({ params }: AsyncPageProps) {
 
           <div className="relative w-full h-[400px] mb-8 rounded-lg overflow-hidden">
             <Image
-              src={article.cover_image || "/placeholder.svg"}
+              src={article.cover_image || "/images/placeholder.png"}
               alt={article.title}
               fill
               className="object-cover"

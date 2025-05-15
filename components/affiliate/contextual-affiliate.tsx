@@ -54,7 +54,7 @@ export default function ContextualAffiliate({ product, context, children, classN
         <div className="flex gap-4 bg-white dark:bg-gray-900 p-3 rounded-lg">
           <div className="relative w-24 h-24 flex-shrink-0">
             <Image
-              src={product.imageUrl || "/placeholder.svg"}
+              src={product.imageUrl || "/images/placeholder.png"}
               alt={product.title}
               fill
               className="object-contain"
