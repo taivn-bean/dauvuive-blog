@@ -65,7 +65,7 @@ export interface Article {
   author_id: string;
   seo: SEO;
   series_id: string | null;
-  content_length?: number;
+  view?: number;
   category?: Category;
   author?: Author;
   tags?: Tag[];

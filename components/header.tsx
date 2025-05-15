@@ -5,10 +5,15 @@ import type React from "react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { Menu, Search, Moon, Sun } from "lucide-react";
+import { Menu, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import AuthButton from "./auth/auth-button";
@@ -133,6 +138,7 @@ export default function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <SheetTitle className="hidden">Menu</SheetTitle>
                 <div className="flex flex-col gap-6 pt-6">
                   <Link href="/" className="flex items-center">
                     <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">

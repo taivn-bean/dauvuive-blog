@@ -33,8 +33,8 @@ export default function ResetPasswordPage() {
     <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold">Reset Password</CardTitle>
-          <CardDescription>Enter your new password</CardDescription>
+          <CardTitle className="text-2xl font-bold">Đặt lại mật khẩu</CardTitle>
+          <CardDescription>Đặt lại mật khẩu mới</CardDescription>
         </CardHeader>
         <CardContent>
           {message && (
@@ -50,7 +50,7 @@ export default function ResetPasswordPage() {
                 htmlFor="password"
                 className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
-                New Password
+                Mật khẩu mới
               </label>
               <Input id="password" name="password" type="password" required className="w-full" />
             </div>
@@ -59,20 +59,20 @@ export default function ResetPasswordPage() {
                 htmlFor="confirmPassword"
                 className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
-                Confirm New Password
+                Xác nhận mật khẩu
               </label>
               <Input id="confirmPassword" name="confirmPassword" type="password" required className="w-full" />
             </div>
             <Button type="submit" className="w-full">
-              Reset Password
+              Đặt lại mật khẩu
             </Button>
           </form>
         </CardContent>
         <CardFooter className="flex justify-center">
           <p className="text-sm text-gray-600">
-            Remember your password?{" "}
+            Bạn đã có tài khoản?{" "}
             <Link href="/login" className="font-medium text-primary hover:underline">
-              Login
+              Đăng nhập
             </Link>
           </p>
         </CardFooter>

@@ -35,9 +35,9 @@ export default function ForgotPasswordPage() {
     <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold">Forgot Password</CardTitle>
+          <CardTitle className="text-2xl font-bold">Quên mật khẩu</CardTitle>
           <CardDescription>
-            Enter your email to receive a password reset link
+            Nhập email của bạn để nhận liên kết đặt lại mật khẩu
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -70,18 +70,18 @@ export default function ForgotPasswordPage() {
               />
             </div>
             <Button type="submit" className="w-full">
-              Send Reset Link
+              Gửi liên kết đặt lại mật khẩu
             </Button>
           </form>
         </CardContent>
         <CardFooter className="flex justify-center">
           <p className="text-sm text-gray-600">
-            Remember your password?{" "}
+            Bạn đã nhớ mật khẩu?{" "}
             <Link
               href="/login"
               className="font-medium text-primary hover:underline"
             >
-              Login
+              Đăng nhập
             </Link>
           </p>
         </CardFooter>

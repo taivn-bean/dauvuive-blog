@@ -89,7 +89,7 @@ CREATE TABLE articles (
   cover_image TEXT,
   seo JSONB,
   featured BOOLEAN DEFAULT FALSE,
-  
+  view INTEGER DEFAULT FLOOR(RANDOM() * 1000 + 1),
   author_id UUID NOT NULL,
   series_id UUID,
   category_id UUID,
@@ -147,19 +147,6 @@ CREATE TABLE article_tags (
   CONSTRAINT fk_article_tag_tag FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
 );
 
-CREATE TABLE views (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-
-  article_id UUID NOT NULL,
-  user_id UUID,
-  ip_address INET,
-  user_agent TEXT,
-
-  CONSTRAINT fk_view_article FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE,
-  CONSTRAINT fk_view_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
-);
-
 CREATE TABLE comments (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at TIMESTAMPTZ DEFAULT NOW(),
@@ -205,7 +192,7 @@ BEGIN
   FOR table_name IN
     SELECT unnest(array[
       'authors', 'profiles', 'categories', 'series', 'tags',
-      'articles', 'ratings', 'reactions', 'reports', 'article_tags', 'views', 'comments', 'bookmarks'
+      'articles', 'ratings', 'reactions', 'reports', 'article_tags', 'comments', 'bookmarks'
     ])
   LOOP
     EXECUTE format('

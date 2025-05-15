@@ -14,6 +14,7 @@ Yêu cầu:
 - Phát triển infographic tóm tắt kiến thức
 - Xây dựng internal linking giữa các bài viết
 - Xây dựng external linking đến các nguồn tin cậy
+- Cac lien ket can mo o tab moi
 - Xây dựng các tag, category, tag
 - Xây dựng các series bài viết
 

@@ -2,18 +2,18 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, Clock, Tag } from "lucide-react";
+import { Calendar, Eye, Tag } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 
 import Sidebar from "@/components/layout/sidebar";
-import CommentSection from "@/components/comment/comment-section";
 import TableOfContents from "@/components/series/table-of-contents";
 import ArticleContent from "@/components/article/article-content";
 import RelatedArticles from "@/components/article/related-articles";
 import { getArticle, getArticleSlugs } from "@/services/articles";
-import { generateTableOfContents, getReadingTime } from "@/lib/common";
+import { generateTableOfContents } from "@/lib/common";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AsyncPageProps } from "@/types/type";
+import ArticleIncreaseView from "@/components/article/article-increase-view";
 
 // Generate static paths for all articles
 export async function generateStaticParams() {
@@ -167,10 +167,8 @@ export default async function ArticlePage({ params }: AsyncPageProps) {
                 </time>
               </div>
               <div className="flex items-center">
-                <Clock className="h-4 w-4 mr-1" />
-                <span>
-                  {getReadingTime(article?.content_length ?? 0)} phút đọc
-                </span>
+                <Eye className="h-4 w-4 mr-1" />
+                <span>{article?.view ?? 0} lượt xem</span>
               </div>
               <div className="flex items-center gap-1">
                 <Avatar>
@@ -303,12 +301,12 @@ export default async function ArticlePage({ params }: AsyncPageProps) {
           )} */}
 
           {/* Comment Section */}
-          <div className="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
+          {/* <div className="mt-12 pt-6 border-t border-gray-200 dark:border-gray-800">
             <CommentSection
               articleId={article.id}
               initialComments={mockComments}
             />
-          </div>
+          </div> */}
 
           <div className="mt-12">
             <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-gray-50">
@@ -320,6 +318,7 @@ export default async function ArticlePage({ params }: AsyncPageProps) {
 
         <Sidebar className="w-full md:w-1/3 mt-8 md:mt-0" />
       </div>
+      <ArticleIncreaseView articleId={article.id} />
     </div>
   );
 }

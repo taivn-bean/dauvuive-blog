@@ -52,6 +52,8 @@ export default function ArticleContent({
             return (
               <a
                 className="text-primary-600 dark:text-primary-400 hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
                 {...props}
               />
             );

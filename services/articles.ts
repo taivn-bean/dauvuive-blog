@@ -20,6 +20,7 @@ export const getListArticles = async (page: number = 1, limit: number = 5) => {
       slug,
       seo,
       cover_image,
+      view,
       created_at,
       updated_at,
       series:series_id (id, name, slug),
@@ -81,6 +82,7 @@ export const getArticle = async (slug: string) => {
       content,
       seo,
       cover_image,
+      view,
       created_at,
       updated_at,
       series:series_id (id, name, slug),
@@ -299,4 +301,16 @@ export const getArticlesByTag = async (
   }
 
   return data;
+};
+
+export const increaseArticleView = async (articleId: string) => {
+  try {
+    const { error } = await supabase.rpc("increase_article_view", {
+      article_id: articleId,
+    });
+
+    if (error) throw error;
+  } catch (error) {
+    console.error("Error increasing article view:", error);
+  }
 };

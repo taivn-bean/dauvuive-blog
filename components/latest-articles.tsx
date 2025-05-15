@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, Clock } from "lucide-react";
+import { Calendar, Eye } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import type { Article } from "@/types/type";
-import { getReadingTime } from "@/lib/common";
 
 export default function LatestArticles({
   articles,
@@ -52,10 +51,8 @@ export default function LatestArticles({
                 </time>
               </div>
               <div className="flex items-center">
-                <Clock className="h-4 w-4 mr-1" />
-                <span>
-                  {getReadingTime(article.content_length ?? 0)} phút đọc
-                </span>
+                <Eye className="h-4 w-4 mr-1" />
+                <span>{article.view ?? 0} lượt xem</span>
               </div>
             </div>
           </div>

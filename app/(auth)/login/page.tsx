@@ -31,9 +31,9 @@ export default async function LoginPage({ searchParams }: AsyncPageProps) {
     <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold">Login</CardTitle>
+          <CardTitle className="text-2xl font-bold">Đăng nhập</CardTitle>
           <CardDescription>
-            Enter your email and password to login to your account
+            Đăng nhập để truy cập vào hệ thống
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -66,13 +66,13 @@ export default async function LoginPage({ searchParams }: AsyncPageProps) {
                   htmlFor="password"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Password
+                  Mật khẩu
                 </label>
                 <Link
                   href="/forgot-password"
                   className="text-sm font-medium text-primary hover:underline"
                 >
-                  Forgot password?
+                  Quên mật khẩu?
                 </Link>
               </div>
               <Input
@@ -84,18 +84,18 @@ export default async function LoginPage({ searchParams }: AsyncPageProps) {
               />
             </div>
             <Button type="submit" className="w-full">
-              Login
+              Đăng nhập
             </Button>
           </Form>
         </CardContent>
         <CardFooter className="flex justify-center">
           <p className="text-sm text-gray-600">
-            Don&apos;t have an account?{" "}
+            Bạn chưa có tài khoản?{" "}
             <Link
               href="/signup"
               className="font-medium text-primary hover:underline"
             >
-              Sign up
+              Đăng ký
             </Link>
           </p>
         </CardFooter>
