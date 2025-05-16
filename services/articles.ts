@@ -55,8 +55,11 @@ export const getArticleSlugs = async () => {
   try {
     const { data, error } = await supabase
       .from("articles")
-      .select("slug")
-      .overrideTypes<string[]>();
+      .select("slug, updated_at, created_at")
+      .order("created_at", { ascending: false })
+      .overrideTypes<
+        { slug: string; updated_at: string; created_at: string }[]
+      >();
 
     if (error) {
       throw error;

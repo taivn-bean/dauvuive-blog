@@ -7,6 +7,7 @@ import ScrollToTop from "@/components/scroll-to-top";
 import "./globals.css";
 import type { Metadata } from "next";
 import { WEB_INFO } from "@/constants/domain-info";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -73,6 +74,7 @@ export default function RootLayout({
           </div>
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId="G-FJSNTK1T60" />
     </html>
   );
 }
