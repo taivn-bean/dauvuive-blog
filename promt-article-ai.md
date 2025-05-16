@@ -11,8 +11,6 @@ Yêu cầu:
 - Có ví dụ thực tế và case study cụ thể
 - Định dạng content chuẩn Featured Snippet
 - Thiết kế checklist đi kèm mỗi bài viết
-- Phát triển infographic tóm tắt kiến thức
-- Xây dựng internal linking giữa các bài viết
 - Xây dựng external linking đến các nguồn tin cậy
 - Cac lien ket can mo o tab moi
 - Xây dựng các tag, category, tag
@@ -29,7 +27,6 @@ interface SEO {
   description: string;
   keywords: string[];
   robots: string;
-  image: string;
 }
 // ARTICLES
 export interface Article {

@@ -91,9 +91,7 @@ export default function ContactPageClient() {
                     Địa chỉ
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mt-1">
-                    123 Đường ABC, Quận XYZ
-                    <br />
-                    Thành phố Hồ Chí Minh, Việt Nam
+                    {WEB_INFO.address}
                   </p>
                 </div>
               </div>
@@ -138,9 +136,7 @@ export default function ContactPageClient() {
                 Giờ làm việc
               </h3>
               <div className="space-y-2 text-gray-600 dark:text-gray-300">
-                <p>Thứ Hai - Thứ Sáu: 8:30 - 17:30</p>
-                <p>Thứ Bảy: 8:30 - 12:00</p>
-                <p>Chủ Nhật: Nghỉ</p>
+                <p>Thứ Hai - Chủ nhật: 8:30 - 18:30</p>
               </div>
             </div>
           </div>
