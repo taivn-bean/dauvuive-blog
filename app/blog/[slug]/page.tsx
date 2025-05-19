@@ -14,6 +14,7 @@ import { generateTableOfContents } from "@/lib/common";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AsyncPageProps } from "@/types/type";
 import ArticleIncreaseView from "@/components/article/article-increase-view";
+import { WEB_INFO } from "@/constants/domain-info";
 
 // Generate static paths for all articles
 export async function generateStaticParams() {
@@ -39,14 +40,20 @@ export async function generateMetadata({
   // Giả định rằng article có thêm trường rating
   // const articleRating = article.ratings || { average: 0, count: 0 };
 
+  const canonicalUrl = `${WEB_INFO.url}/blog/${article.slug}`;
+
   return {
     title: article.title,
     description: article.excerpt,
     keywords: [
       ...(article.tags?.map((tag) => tag.name) || []),
+      ...(article.seo?.keywords || []),
       "chăm sóc trẻ",
       "nuôi dạy trẻ",
     ],
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: article.seo.title,
       description: article.seo.description,
@@ -130,7 +137,9 @@ export default async function ArticlePage({ params }: AsyncPageProps) {
               <div className="flex items-center gap-1">
                 <Avatar>
                   <AvatarImage
-                    src={article.author?.avatar_url ?? "/images/placeholder.png"}
+                    src={
+                      article.author?.avatar_url ?? "/images/placeholder.png"
+                    }
                     alt={article.author?.name ?? ""}
                     width={24}
                     height={24}
