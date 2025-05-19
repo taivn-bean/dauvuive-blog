@@ -15,6 +15,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AsyncPageProps } from "@/types/type";
 import ArticleIncreaseView from "@/components/article/article-increase-view";
 import { WEB_INFO } from "@/constants/domain-info";
+import ArticleActions from "@/components/article/article-actions";
 
 // Generate static paths for all articles
 export async function generateStaticParams() {
@@ -201,15 +202,9 @@ export default async function ArticlePage({ params }: AsyncPageProps) {
           </div>
 
           {/* Article Actions trước nội dung */}
-          {/* <div className="mb-6 border-y border-gray-200 dark:border-gray-800 py-3">
-            <ArticleActions
-              articleId={article.id}
-              initialUpvotes={articleStats.upvotes}
-              initialDownvotes={articleStats.downvotes}
-              initialComments={articleStats.comments}
-              commentSectionId="comments"
-            />
-          </div> */}
+          <div className="mb-6 border-y border-gray-200 dark:border-gray-800 py-3">
+            <ArticleActions article={article} />
+          </div>
 
           {/* Table of Contents */}
           {tableOfContents.length > 0 && (

@@ -317,3 +317,17 @@ export const increaseArticleView = async (articleId: string) => {
     console.error("Error increasing article view:", error);
   }
 };
+
+export const reportArticle = async (articleId: string, reason: string, description: string) => {
+  try {
+    const { error } = await supabase.from("article_violations").insert({
+      article_id: articleId,
+      reason,
+      description,
+    });
+
+    if (error) throw error;
+  } catch (error) {
+    console.error("Error reporting article:", error);
+  }
+};
