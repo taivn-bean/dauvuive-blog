@@ -224,25 +224,19 @@ export default async function ArticlePage({ params }: AsyncPageProps) {
             <h3 className="text-lg font-medium text-gray-900 dark:text-gray-50 mb-2">
               Bạn thấy bài viết này thế nào?
             </h3>
-            <ArticleRating
-              articleId={article.id}
-              initialRating={0}
-              totalRatings={articleRating.count}
-              size="lg"
-            />
+            <ArticleRating article={article} />
           </div> */}
 
           <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800">
             <div className="flex flex-wrap gap-2">
               <Tag className="h-5 w-5 text-gray-500 dark:text-gray-400" />
-              {article.tags?.map((tag) => (
-                <Link
-                  key={tag.id}
-                  href={`/tags/${tag.slug}`}
+              {article.seo?.keywords?.map((tag) => (
+                <p
+                  key={tag}
                   className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-sm rounded-full hover:bg-primary-100 dark:hover:bg-primary-900 transition-colors"
                 >
-                  {tag.name}
-                </Link>
+                  {tag}
+                </p>
               ))}
             </div>
           </div>

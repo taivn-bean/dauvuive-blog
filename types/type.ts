@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface TableOfContents {
-  id: string
-  text: string
-  level: number
-  children?: TableOfContents[]
+  id: string;
+  text: string;
+  level: number;
+  children?: TableOfContents[];
 }
 
 export interface AsyncPageProps {
@@ -114,6 +114,8 @@ export interface Rating {
   value: number; // e.g., 1 - 5
   user_id: string;
   article_id: string;
+  user_agent: string | null;
+  ip_address: string | null;
 }
 
 // REACTIONS

@@ -1,6 +1,6 @@
 // lib/data.ts
 
-import { Article } from "@/types/type";
+import { Article, Rating } from "@/types/type";
 import { createClient } from "@/utils/supabase/client";
 
 const supabase = createClient();
@@ -318,7 +318,11 @@ export const increaseArticleView = async (articleId: string) => {
   }
 };
 
-export const reportArticle = async (articleId: string, reason: string, description: string) => {
+export const reportArticle = async (
+  articleId: string,
+  reason: string,
+  description: string
+) => {
   try {
     const { error } = await supabase.from("article_violations").insert({
       article_id: articleId,
@@ -329,5 +333,32 @@ export const reportArticle = async (articleId: string, reason: string, descripti
     if (error) throw error;
   } catch (error) {
     console.error("Error reporting article:", error);
+  }
+};
+
+export const getArticleRating = async (articleId: string) => {
+  try {
+    const { data, error } = await supabase
+      .from("ratings")
+      .select("value", { count: "exact", head: false }) // Để lấy count từ header
+      .eq("article_id", articleId);
+
+    if (error) throw error;
+
+    if (!data || data.length === 0) {
+      return { average: 0, total: 0 };
+    }
+
+    const total = data.length;
+    const average =
+      data.reduce(
+        (sum: number, r: Partial<Rating>) => sum + (r?.value ?? 0),
+        0
+      ) / total;
+
+    return { average, total };
+  } catch (error) {
+    console.error("Error fetching article rating:", error);
+    return { average: 0, total: 0 };
   }
 };
