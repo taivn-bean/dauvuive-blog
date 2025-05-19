@@ -5,6 +5,7 @@ import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Article } from "@/types/type";
 import { getArticleRating } from "@/services/articles";
+import { useLocalStorage } from "usehooks-ts";
 
 interface ArticleRatingProps {
   article: Article;
@@ -16,19 +17,19 @@ export default function ArticleRating({ article }: ArticleRatingProps) {
   const [hoverRating, setHoverRating] = useState(0);
   const [hasRated, setHasRated] = useState(false);
   const [readOnly, setReadOnly] = useState(false);
+  const [value, setValue] = useLocalStorage("ratedArticles", "{}");
 
   useEffect(() => {
     // Kiểm tra xem người dùng đã đánh giá bài viết này chưa
-    const ratedArticles = localStorage.getItem("ratedArticles");
-    if (ratedArticles) {
-      const parsedRatedArticles = JSON.parse(ratedArticles);
+    if (value) {
+      const parsedRatedArticles = JSON.parse(value);
       if (parsedRatedArticles[article.id]) {
         setRating(parsedRatedArticles[article.id]);
         setHasRated(true);
         setReadOnly(true);
       }
     }
-  }, [article.id]);
+  }, [article.id, value]);
 
   const handleRate = (newRating: number) => {
     if (readOnly || hasRated) return;
@@ -37,11 +38,11 @@ export default function ArticleRating({ article }: ArticleRatingProps) {
     setHasRated(true);
 
     // Lưu đánh giá vào localStorage
-    const ratedArticles = JSON.parse(
-      window?.localStorage?.getItem("ratedArticles") || "{}"
-    );
-    ratedArticles[article.id] = newRating;
-    window?.localStorage?.setItem("ratedArticles", JSON.stringify(ratedArticles));
+    const parsedValue = JSON.parse(value);
+    setValue({
+      ...parsedValue,
+      [article.id]: newRating,
+    });
   };
 
   const handleMouseEnter = (index: number) => {

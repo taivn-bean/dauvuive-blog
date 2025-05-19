@@ -10,8 +10,8 @@ import {
 import { cn } from "@/lib/utils";
 import { Article } from "@/types/type";
 import { toast } from "sonner";
-import { useState } from "react";
 import { reportArticle } from "@/services/articles";
+import { useLocalStorage } from "usehooks-ts";
 
 interface ArticleActionsProps {
   article: Article;
@@ -24,8 +24,9 @@ export default function ArticleActions({
   article,
   className,
 }: ArticleActionsProps) {
-  const [reportHistory, setReportHistory] = useState<string[]>(
-    JSON.parse(window?.localStorage?.getItem("reportHistory") ?? "[]")
+  const [reportHistory, setReportHistory] = useLocalStorage<string[]>(
+    "reportHistory",
+    []
   );
   const handleShare = async () => {
     if (navigator.share) {
@@ -64,7 +65,6 @@ export default function ArticleActions({
     toast("Báo cáo bài viết", {
       description: "Cảm ơn bạn đã báo cáo. Chúng tôi sẽ xem xét bài viết này.",
     });
-    window?.localStorage?.setItem("reportHistory", JSON.stringify(newReportHistory));
     setReportHistory(newReportHistory);
   };
 
