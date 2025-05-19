@@ -25,7 +25,7 @@ export default function ArticleActions({
   className,
 }: ArticleActionsProps) {
   const [reportHistory, setReportHistory] = useState<string[]>(
-    JSON.parse(localStorage.getItem("reportHistory") ?? "[]")
+    JSON.parse(window?.localStorage?.getItem("reportHistory") ?? "[]")
   );
   const handleShare = async () => {
     if (navigator.share) {
@@ -64,7 +64,7 @@ export default function ArticleActions({
     toast("Báo cáo bài viết", {
       description: "Cảm ơn bạn đã báo cáo. Chúng tôi sẽ xem xét bài viết này.",
     });
-    localStorage.setItem("reportHistory", JSON.stringify(newReportHistory));
+    window?.localStorage?.setItem("reportHistory", JSON.stringify(newReportHistory));
     setReportHistory(newReportHistory);
   };
 

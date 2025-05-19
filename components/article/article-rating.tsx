@@ -38,10 +38,10 @@ export default function ArticleRating({ article }: ArticleRatingProps) {
 
     // Lưu đánh giá vào localStorage
     const ratedArticles = JSON.parse(
-      localStorage.getItem("ratedArticles") || "{}"
+      window?.localStorage?.getItem("ratedArticles") || "{}"
     );
     ratedArticles[article.id] = newRating;
-    localStorage.setItem("ratedArticles", JSON.stringify(ratedArticles));
+    window?.localStorage?.setItem("ratedArticles", JSON.stringify(ratedArticles));
   };
 
   const handleMouseEnter = (index: number) => {
